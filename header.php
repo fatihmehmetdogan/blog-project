@@ -1,3 +1,19 @@
+<?php 
+require_once 'Admin/baglanti.php';
+$ayarsor=$baglanti->prepare("SELECT * FROM ayarlar where ayar_id=?");
+$ayarsor->execute(array(1));
+$ayarcek=$ayarsor->fetch(PDO::FETCH_ASSOC);
+
+$hakkimizdasor=$baglanti->prepare("SELECT * FROM hakkimizda where hakkimizda_id=?");
+$hakkimizdasor->execute(array(1));
+$hakkimizdacek=$hakkimizdasor->fetch(PDO::FETCH_ASSOC);
+
+$slidersor=$baglanti->prepare("SELECT * FROM slider where slider_id=?");
+$slidersor->execute(array(1));
+$slidercek=$slidersor->fetch(PDO::FETCH_ASSOC);
+
+ ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,9 +21,9 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Mentor Bootstrap Template - Index</title>
-  <meta content="" name="descriptison">
-  <meta content="" name="keywords">
+  <title><?php echo $ayarcek['ayar_baslik'] ?></title>
+  <meta content="<?php echo $ayarcek['ayar_aciklama'] ?>" name="descriptison">
+  <meta content="<?php echo $ayarcek['ayar_anahtar'] ?>" name="keywords">
 
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
@@ -28,12 +44,6 @@
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: Mentor - v2.1.0
-  * Template URL: https://bootstrapmade.com/mentor-free-education-bootstrap-theme/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 </head>
 
 <body>
@@ -42,41 +52,28 @@
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo mr-auto"><a href="index.html">Mentor</a></h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo mr-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-
+      <h1 class="logo mr-auto"><a href="index.php">Blog Sayfası</a></h1>
+    
       <nav class="nav-menu d-none d-lg-block">
         <ul>
-          <li class="active"><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="courses.html">Courses</a></li>
-          <li><a href="trainers.html">Trainers</a></li>
-          <li><a href="events.html">Events</a></li>
-          <li><a href="pricing.html">Pricing</a></li>
-          <li class="drop-down"><a href="">Drop Down</a>
+          <li class="active"><a href="index.php">Anasayfa</a></li>
+          <li><a href="hakkımızda.php">Hakkımızda</a></li>
+          <!--<li><a href="ekip.php">Ekibimiz</a></li>-->
+          <!--<li><a href="galeri.php">Galeri</a></li>-->
+          <li><a href="blog.php">Blog</a></li>
+          
+          <li class="drop-down"><a href="">Kategoriler</a>
             <ul>
               <li><a href="#">Drop Down 1</a></li>
-              <li class="drop-down"><a href="#">Deep Drop Down</a>
-                <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Drop Down 2</a></li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
+              
             </ul>
           </li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="iletisim.php">İletişim</a></li>
 
         </ul>
       </nav><!-- .nav-menu -->
 
-      <a href="courses.html" class="get-started-btn">Get Started</a>
+    
 
     </div>
   </header><!-- End Header -->

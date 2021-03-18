@@ -45,6 +45,14 @@
               </p>
             </a>
           </li>
+           <li class="nav-item">
+            <a href="hakkimizda.php" class="nav-link">
+             <i class="fas fa-address-card"></i>
+              <p class="beyazyazi">
+                Hakkımızda 
+              </p>
+            </a>
+          </li>
 
           <li class="nav-item menu-open">
             <a href="#" class="nav-link active ">
@@ -54,21 +62,21 @@
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
+            <ul class="nav nav-treeview"> 
               <li class="nav-item">
-                <a href="ayarlar.php" class="nav-link">
+                <a href="ayarlar.php?sayfa=ayarlar" class="nav-link">
                   <i class="fas fa-cogs"></i>
                   <p class="beyazyazi">Genel Ayarlar</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="kullanıcı.php" class="nav-link">
+                <a href="ayarlar.php?sayfa=kullanici" class="nav-link">
                   <i class="fas fa-user-cog"></i>
                   <p class="beyazyazi">Kullanıcı Ayarları</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="sosyalmedya.php" class="nav-link">
+                <a href="sosyalmedya.php?sayfa=sosyalmedya" class="nav-link">
                   <i class="fas fa-hashtag"></i>
                   <p class="beyazyazi">Sosyal Medya</p>
                 </a>

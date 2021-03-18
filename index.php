@@ -1,13 +1,17 @@
 <?php require_once 'header.php'; ?>
 
   <!-- ======= Hero Section ======= -->
-  <section id="hero" class="d-flex justify-content-center align-items-center">
+  <section style="background-image: url(admin/resimler/slider/<?php echo $slidercek['slider_resim'] ?>);" 
+    id="hero" class="d-flex justify-content-center align-items-center">
     <div class="container position-relative" data-aos="zoom-in" data-aos-delay="100">
-      <h1>Learning Today,<br>Leading Tomorrow</h1>
-      <h2>We are team of talanted designers making websites with Bootstrap</h2>
-      <a href="courses.html" class="btn-get-started">Get Started</a>
+      <h1><?php echo $slidercek['slider_baslik'] ?><h1>
+      <h2><?php echo $slidercek['slider_aciklama'] ?><h2>
+      <a href="<?php echo $slidercek['slider_link'] ?>"
+       class="btn-get-started"><?php echo $slidercek['slider_buton'] ?></a>
     </div>
   </section><!-- End Hero -->
+
+
 
   <main id="main">
 

@@ -8,6 +8,10 @@ $ayarsor->execute(array(1));
 $ayarcek=$ayarsor->fetch(PDO::FETCH_ASSOC); # PDO ile güvenli bağlanti yapmamızı sağlar veritabanına bağlanıp verilerimiz çekiyoruz
 
 ?>
+
+<?php if (@$_GET['sayfa']=="ayarlar") { ?>
+  
+
   
   <div class="content-wrapper">
    
@@ -15,9 +19,17 @@ $ayarcek=$ayarsor->fetch(PDO::FETCH_ASSOC); # PDO ile güvenli bağlanti yapmam�
       <div class="container-fluid">
         
         <div class="row">
+          
         <div class="col-md-12">  
       <!-- general form elements -->
             <div class="card card-primary">
+              <?php 
+              if (@$_GET['durum']=="okey") { ?>
+                <p style="color:green; ">İşlem Başarılı</p>  
+              <?php } elseif (@$_GET['durum']=="no") { ?>
+                <p style="color:red; ">İşlem Başarısız</p>  
+                
+             <?php } ?>
               <div class="card-header">
                 <h3 class="card-title">Ayarlar</h3>
               </div>
@@ -74,4 +86,5 @@ $ayarcek=$ayarsor->fetch(PDO::FETCH_ASSOC); # PDO ile güvenli bağlanti yapmam�
     </section>
     <!-- /.content -->
   </div>
+<?php } ?>
  <?php require_once 'footer.php'; ?>
