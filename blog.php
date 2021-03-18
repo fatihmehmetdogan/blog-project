@@ -28,7 +28,7 @@ $blogsor->execute(array());
               <div class="course-content">
                 
 
-                <h3><a href=""></a><?php echo $blogcek['blog_baslik'] ?></h3>
+                <h3><a href="blog-detay-<?=seo($blogcek['blog_baslik']).'-'.$blogcek['blog_id'] ?>"><?php echo $blogcek['blog_baslik'] ?></a></h3> 
                 <p><?php 
 
                 $aciklama =$blogcek['blog_aciklama'];   # yazının bi bölümünü alıyor

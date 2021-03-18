@@ -14,5 +14,7 @@ function seo($s) {
 	$s = trim($s, '-');
 	return $s;
 }
-#icerik-detay-<?=seo($urunlercek['urun_baslik']).'-'.$urunlercek['urun_id'] ?>
+
+#blog-detay-<?=seo($blogcek['blog_baslik']).'-'.$blogcek['blog_id'] ?>
+
 
