@@ -1,5 +1,6 @@
 <?php 
 require_once 'Admin/baglanti.php';
+require_once 'function.php';
 $ayarsor=$baglanti->prepare("SELECT * FROM ayarlar where ayar_id=?");
 $ayarsor->execute(array(1));
 $ayarcek=$ayarsor->fetch(PDO::FETCH_ASSOC);

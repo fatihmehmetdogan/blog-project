@@ -73,6 +73,67 @@ require_once 'sidebar.php';
     <!-- /.content -->
   </div>
 
+<?php } elseif ($_GET['sayfa']=="blog") { ?>
+  <div class="content-wrapper">
+   
+    <section class="content">
+      <div class="container-fluid">
+        
+        <div class="row">
+        <div class="col-md-12">  
+      <!-- general form elements -->
+            <div class="card card-primary">
+             
+              <div class="card-header">
+                <h3 class="card-title">BLOG</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form action="islem.php" method="post" enctype="multipart/form-data">
+                <div class="card-body">
+                  
+                 
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Blog Resim</label>
+                    <input name="resim"type="file"  class="form-control">
+                  </div>
+
+
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Blog Başlık</label>
+                    <input name="baslik" type="text" class="form-control" placeholder="Lütfen ekip üye ismini giriniz.">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Blog Sıra</label>
+                    <input name="sira" type="text" class="form-control" placeholder="Lütfen ekip üye ismini giriniz.">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Blog Açıklama</label>
+                    <textarea name="aciklama" id="editor1" class="ckeditor"></textarea>>
+                  </div>
+                
+                 
+
+                  </div>
+                  
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                  <button name="blogkaydet" style="float: right" type="submit" class="btn btn-primary">Kaydet</button>
+                </div>
+              </form>
+            </div>
+            <!-- /.card -->
+          </div>
+        </div>
+        
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
 <?php } ?>
 
 

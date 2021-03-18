@@ -364,4 +364,163 @@ else{
 
 
 
+
+
+
+
+
+if (isset($_POST['blogkaydet'])) {    
+
+$uploads_dir='resimler/blog';
+@$tmp_name=$_FILES['resim'] ["tmp_name"];
+@$name=$_FILES['resim'] ["name"];
+
+$sayi1=rand(1,1000000);
+$sayi2=rand(1,1000000);
+$sayi3=rand(1,1000000);
+$sayilar=$sayi1.$sayi2.$sayi3;
+$resimadi=$sayilar.$name;
+@move_uploaded_file($tmp_name,"$uploads_dir/$resimadi");
+
+$kaydet=$baglanti->prepare("INSERT into blog SET
+
+blog_baslik=:blog_baslik,
+blog_sira=:blog_sira,
+blog_aciklama=:blog_aciklama,
+blog_resim=:blog_resim
+	");
+$insert=$kaydet->execute(array(
+
+'blog_baslik'=>htmlspecialchars($_POST['baslik']),
+'blog_sira'=>htmlspecialchars($_POST['sira']),
+'blog_aciklama'=>$_POST['aciklama'],
+'blog_resim'=>$resimadi
+));
+
+if ($insert) {
+Header("Location:blog.php?durum=okey");   #yönlendirme
+}else{
+	Header("Location:blog.php?durum=no");   #yönlendirme
+}
+} 
+
+
+
+
+
+
+
+
+
+if (isset($_POST['blogduzenle'])) {     # ayarkaydet adında bi name var mı böyle bi değer geliyorsa
+
+if ($_FILES['resim'] ["size"]>0) {  #resim yükleme
+	
+$uploads_dir='resimler/ekip';
+@$tmp_name=$_FILES['resim'] ["tmp_name"];
+@$name=$_FILES['resim'] ["name"];
+
+$sayi1=rand(1,1000000);
+$sayi2=rand(1,1000000);
+$sayi3=rand(1,1000000);
+$sayilar=$sayi1.$sayi2.$sayi3;
+$resimadi=$sayilar.$name;
+@move_uploaded_file($tmp_name,"$uploads_dir/$resimadi");
+
+$kaydet=$baglanti->prepare("UPDATE ekip SET
+
+blog_baslik=:blog_baslik,
+blog_sira=:blog_sira,
+blog_aciklama=:blog_aciklama,
+blog_resim=:blog_resim
+WHERE blog_id={$_POST['id']}  # blog id ye göre güncelleme yapmamı sağlıyor
+	");
+$update=$kaydet->execute(array(
+
+'blog_baslik'=>htmlspecialchars($_POST['baslik']),
+'blog_sira'=>htmlspecialchars($_POST['sira']),
+'blog_aciklama'=>$_POST['aciklama'],
+'blog_resim'=>$resimadi 
+
+));
+
+
+if ($update) {
+	$eskiresim=$_POST['eskiresim'];
+	unlink("resimler/blog/$eskiresim"); # eski resmi silme
+Header("Location:blog.php?durum=okey");   #yönlendirme
+}else{
+	Header("Location:blog.php?durum=no");   #yönlendirme
+	
+}
+
+}
+ # resim yoksa
+
+else{
+	$kaydet=$baglanti->prepare("UPDATE blog SET
+
+blog_baslik=:blog_baslik,
+blog_sira=:blog_sira,
+blog_aciklama=:blog_aciklama
+WHERE blog_id={$_POST['id']}
+
+	");
+$update=$kaydet->execute(array(
+'blog_baslik'=>htmlspecialchars($_POST['baslik']),
+'blog_sira'=>htmlspecialchars($_POST['sira']),
+'blog_aciklama'=>$_POST['aciklama']
+));
+
+
+if ($update) {
+Header("Location:blog.php?durum=okey");   #yönlendirme
+}else{
+	Header("Location:blog.php?durum=no");   #yönlendirme	
+}
+
+
+
+}
+
+
+}
+
+
+
+
+
+
+
+
+
+# silme
+
+if (isset($_POST['blogsil'])) {
+	
+$eskiresim=$_POST['eskiresim'];
+	unlink("resimler/blog/$eskiresim");
+
+$sil=$baglanti->prepare("DELETE  FROM blog where blog_id=:blog_id");
+$sil->execute(array(
+
+'blog_id'=>$_POST['id']
+
+));
+
+if ($sil) {
+	Header("Location:blog.php?durum=okey");
+}
+else{
+	Header("Location:blog.php?durum=no");
+
+}
+}
+
+
+
+
+
+
+
 ?>
