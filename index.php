@@ -6,8 +6,7 @@
     <div class="container position-relative" data-aos="zoom-in" data-aos-delay="100">
       <h1><?php echo $slidercek['slider_baslik'] ?><h1>
       <h2><?php echo $slidercek['slider_aciklama'] ?><h2>
-      <a href="<?php echo $slidercek['slider_link'] ?>"
-       class="btn-get-started"><?php echo $slidercek['slider_buton'] ?></a>
+      
     </div>
   </section><!-- End Hero -->
 
