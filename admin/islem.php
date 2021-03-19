@@ -678,4 +678,94 @@ else{
 
 
 
+
+
+
+
+if (isset($_POST['icerikduzenle'])) {
+$katid=$_POST['katid'];
+if ($_FILES['resim'] ["size"]>0) {
+
+$uploads_dir='resimler/icerik';
+@$tmp_name=$_FILES['resim'] ["tmp_name"];
+@$name=$_FILES['resim'] ["name"];
+
+$sayi1=rand(1,10000000);
+$sayi2=rand(1,10000000);
+$sayi3=rand(1,10000000);
+$sayilar=$sayi1.$sayi2.$sayi3;
+$resimadi=$sayilar.$name;
+@move_uploaded_file($tmp_name, "$uploads_dir/$resimadi");
+
+
+$kaydet=$baglanti->prepare("UPDATE icerik SET 
+icerik_baslik=:icerik_baslik,
+
+icerik_sira=:icerik_sira,
+icerik_aciklama=:icerik_aciklama,
+kategori_id=:kategori_id,
+icerik_resim=:icerik_resim
+
+WHERE icerik_id={$_POST['id']}
+	");
+$update=$kaydet->execute(array(
+
+
+
+'icerik_baslik'=>htmlspecialchars($_POST['baslik']),
+'icerik_sira'=>htmlspecialchars($_POST['sira']),
+'icerik_aciklama'=>$_POST['aciklama'],
+'kategori_id'=>htmlspecialchars($_POST['katid']),
+'icerik_resim'=>$resimadi
+
+));
+
+
+if ($update) {
+	$eskiresim=$_POST['eskiresim'];
+	unlink("resimler/icerik/$eskiresim");
+Header("Location:icerik.php?katid=$katid&durum=okey");
+}else{
+Header("Location:icerik.php?katid=$katid&durum=no");
+}
+
+}
+
+else{
+
+$kaydet=$baglanti->prepare("UPDATE icerik SET 
+icerik_baslik=:icerik_baslik,
+
+icerik_sira=:icerik_sira,
+icerik_aciklama=:icerik_aciklama,
+kategori_id=:kategori_id,
+
+WHERE icerik_id={$_POST['id']}
+
+	");
+$update=$kaydet->execute(array(
+
+
+
+'icerik_baslik'=>htmlspecialchars($_POST['baslik']),
+'icerik_sira'=>htmlspecialchars($_POST['sira']),
+'icerik_aciklama'=>$_POST['aciklama'],
+'kategori_id'=>htmlspecialchars($_POST['katid']),
+));
+if ($update) {
+Header("Location:icerik.php?katid=$katid&durum=okey");
+}else{
+Header("Location:icerik.php?katid=$katid&durum=no");
+}
+
+}
+
+
+}
+
+
+
+
+
+
 ?>
