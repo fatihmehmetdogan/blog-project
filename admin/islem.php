@@ -179,7 +179,7 @@ Header("Location:slider.php?durum=okey");   #yönlendirme
 
 
 
-if (isset($_POST['ekipkaydet'])) {     # ayarkaydet adında bi name var mı böyle bi değer geliyorsa
+if (isset($_POST['ayarkaydet'])) {     # ayarkaydet adında bi name var mı böyle bi değer geliyorsa
 $kaydet=$baglanti->prepare("UPDATE ayarlar SET
 
 ayar_baslik=:ayar_baslik,
@@ -520,6 +520,161 @@ else{
 
 
 
+
+
+
+
+
+
+
+
+if (isset($_POST['kategorikaydet'])) {     # kategorikaydet adında bi name var mı böyle bi değer geliyorsa
+$kaydet=$baglanti->prepare("INSERT into  kategori SET             #kategori sayfasına yükleme
+
+kategori_baslik=:kategori_baslik,
+kategori_sira=:kategori_sira,
+kategori_durum=:kategori_durum
+	");
+$insert=$kaydet->execute(array(
+
+'kategori_baslik'=>htmlspecialchars($_POST['baslik']),          #ekle.php den name lerini alıyorum
+'kategori_sira'=>htmlspecialchars($_POST['sira']),
+'kategori_durum'=>htmlspecialchars($_POST['durum'])
+));
+
+if ($insert) {
+Header("Location:kategori.php?durum=okey");          #başarılıysa hangi sayfaya yönlendirildiği
+}else{
+	Header("Location:kategori.php?durum=no");   
+}
+} 
+
+
+
+
+
+
+
+
+
+if (isset($_POST['kategoriduzenle'])) {     
+$duzenle=$baglanti->prepare("UPDATE  kategori SET             
+
+kategori_baslik=:kategori_baslik,
+kategori_sira=:kategori_sira,
+kategori_durum=:kategori_durum
+
+WHERE kategori_id={$_POST['id']}
+	");
+
+$update=$duzenle->execute(array(
+
+'kategori_baslik'=>htmlspecialchars($_POST['baslik']),          #ekle.php den name lerini alıyorum
+'kategori_sira'=>htmlspecialchars($_POST['sira']),
+'kategori_durum'=>htmlspecialchars($_POST['durum'])
+));
+
+if ($update) {
+Header("Location:kategori.php?durum=okey");          #başarılıysa hangi sayfaya yönlendirildiği
+}else{
+	Header("Location:kategori.php?durum=no");   
+}
+
+}
+
+
+
+
+
+
+if (isset($_GET['kategorisil'])) {
+	
+
+$sil=$baglanti->prepare("DELETE  FROM kategori where kategori_id=:kategori_id");
+$sil->execute(array(
+
+'kategori_id'=>$_GET['id']
+
+));
+
+if ($sil) {
+	Header("Location:kategori.php?durum=okey");
+}
+else{
+	Header("Location:kategori.php?durum=no");
+
+}
+}
+
+
+
+
+
+if (isset($_POST['icerikkaydet'])) {
+	$katid=$_POST['katid'];
+	$uploads_dir='resimler/icerik';
+@$tmp_name=$_FILES['resim'] ["tmp_name"];
+@$name=$_FILES['resim'] ["name"];
+
+$sayi1=rand(1,10000000);
+$sayi2=rand(1,10000000);
+$sayi3=rand(1,10000000);
+$sayilar=$sayi1.$sayi2.$sayi3;
+$resimadi=$sayilar.$name;
+@move_uploaded_file($tmp_name, "$uploads_dir/$resimadi");
+
+
+$kaydet=$baglanti->prepare("INSERT into icerik SET 
+
+
+icerik_baslik=:icerik_baslik,
+
+icerik_sira=:icerik_sira,
+icerik_aciklama=:icerik_aciklama,
+kategori_id=:kategori_id,
+icerik_resim=:icerik_resim
+	");
+$insert=$kaydet->execute(array(
+
+'icerik_baslik'=>htmlspecialchars($_POST['baslik']),
+'icerik_sira'=>htmlspecialchars($_POST['sira']),
+'icerik_aciklama'=>$_POST['aciklama'],
+'kategori_id'=>htmlspecialchars($_POST['katid']),
+'icerik_resim'=>$resimadi
+));
+
+
+if ($insert) {
+Header("Location:icerik.php?katid=$katid&durum=okey");
+}else{
+	Header("Location:icerik.php?katid=$katid&durum=no");
+}
+
+}
+
+
+
+
+if (isset($_POST['iceriksil'])) {
+	$katid=$_POST['katid'];
+$eskiresim=$_POST['eskiresim'];
+	unlink("resimler/icerik/$eskiresim");
+
+$sil=$baglanti->prepare("DELETE  FROM icerik where icerik_id=:icerik_id");
+$sil->execute(array(
+
+'icerik_id'=>$_POST['id']
+));
+
+
+if ($sil) {
+	Header("Location:icerik.php?katid=$katid&durum=okey");
+}
+else{
+		Header("Location:icerik.php?katid=$katid&durum=no");
+
+}
+}
 
 
 
