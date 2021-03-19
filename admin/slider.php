@@ -34,12 +34,12 @@ $slidercek=$slidersor->fetch(PDO::FETCH_ASSOC); # PDO ile güvenli bağlanti yap
                 <div class="card-body">
                    <div class="form-group">
                     <label for="exampleInputEmail1">Slider Resim</label>
-                    <img style="width:300px" src="resimler/slider/<?php echo $slidercek['slider_resim'] ?>">
+                    <img style="width:200px" src="resimler/slider/<?php echo $slidercek['slider_resim'] ?>">
                   </div>
                   <input type="hidden" name="eskiresim" value="<?php echo $slidercek['slider_resim']?>">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Slider Resim</label>
-                    <input name="resim" value="<?php echo $slidercek['slider_resim'] ?>">
+                    <input name="resim" type="file" value="<?php echo $slidercek['slider_resim'] ?>">
                   </div>
                  
                   <div class="form-group">

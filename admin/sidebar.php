@@ -44,15 +44,6 @@
                 Slider  
               </p>
             </a>
-          </li>
-           <li class="nav-item">
-            <a href="hakkimizda.php" class="nav-link">
-             <i class="fas fa-address-card"></i>
-              <p class="beyazyazi">
-                Hakkımızda 
-              </p>
-            </a>
-          </li>
 
           <li class="nav-item menu-open">
             <a href="#" class="nav-link active ">
@@ -69,18 +60,7 @@
                   <p class="beyazyazi">Genel Ayarlar</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="ayarlar.php?sayfa=kullanici" class="nav-link">
-                  <i class="fas fa-user-cog"></i>
-                  <p class="beyazyazi">Kullanıcı Ayarları</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="sosyalmedya.php?sayfa=sosyalmedya" class="nav-link">
-                  <i class="fas fa-hashtag"></i>
-                  <p class="beyazyazi">Sosyal Medya</p>
-                </a>
-              </li>
+            
             </ul>
           </li>
           <li class="nav-item">
@@ -93,15 +73,6 @@
             </a>
           </li>
 
-             <li class="nav-item">
-            <a href="galeri.php" class="nav-link">
-              <i class="far fa-image"></i>
-              <p class="beyazyazi">
-                Galeri
-              
-              </p>
-            </a>
-          </li>
 
              <li class="nav-item">
             <a href="ekip.php" class="nav-link">

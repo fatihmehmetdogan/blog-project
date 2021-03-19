@@ -1,5 +1,5 @@
 <?php 
-
+session_start();
 require_once 'baglanti.php';
 
 if (isset($_POST['ayarkaydet'])) {     # ayarkaydet adında bi name var mı böyle bi değer geliyorsa
@@ -898,6 +898,30 @@ Header("Location:$link?durum=okey");
 
 
 
+
+
+
+if (isset($_POST['girisyap'])) {
+
+$email=htmlspecialchars($_POST['email']);
+$sifre=htmlspecialchars($_POST['sifre']);
+
+
+
+$kullanicisor=$baglanti->prepare("SELECT * FROM kullanici  where kullanici_email=:kullanici_email and kullanici_sifre=:kullanici_sifre");
+$kullanicisor->execute(array(
+'kullanici_email'=>$email,
+'kullanici_sifre'=>$sifre
+));
+$var=$kullanicisor->rowCount();           #değerleri bastırıyor kaç tane varsa
+ 
+if ($var=="0") {								
+Header("Location:giris.php?durum=hata");
+}else{
+	$_SESSION['giris']=$email;
+	Header("Location:index.php?durum=okey");
+}
+}
 
 
 

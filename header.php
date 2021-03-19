@@ -5,9 +5,10 @@ $ayarsor=$baglanti->prepare("SELECT * FROM ayarlar where ayar_id=?");
 $ayarsor->execute(array(1));
 $ayarcek=$ayarsor->fetch(PDO::FETCH_ASSOC);
 
-$hakkimizdasor=$baglanti->prepare("SELECT * FROM hakkimizda where hakkimizda_id=?");
-$hakkimizdasor->execute(array(1));
-$hakkimizdacek=$hakkimizdasor->fetch(PDO::FETCH_ASSOC);
+
+#$hakkimizdasor=$baglanti->prepare("SELECT * FROM hakkimizda where hakkimizda_id=?");
+#$hakkimizdasor->execute(array(1));
+#$hakkimizdacek=$hakkimizdasor->fetch(PDO::FETCH_ASSOC);
 
 $slidersor=$baglanti->prepare("SELECT * FROM slider where slider_id=?");
 $slidersor->execute(array(1));
@@ -58,7 +59,7 @@ $slidercek=$slidersor->fetch(PDO::FETCH_ASSOC);
       <nav class="nav-menu d-none d-lg-block">
         <ul>
           <li class="active"><a href="index.php">Anasayfa</a></li>
-          <li><a href="hakkımızda.php">Hakkımızda</a></li>
+          <!--<li><a href="hakkımızda.php">Hakkımızda</a></li>-->
           <!--<li><a href="ekip.php">Ekibimiz</a></li>-->
           <!--<li><a href="galeri.php">Galeri</a></li>-->
           <li><a href="blog.php">Blog</a></li>
