@@ -61,7 +61,7 @@
                 </a>
               </li>
             
-            </ul>
+
           </li>
           <li class="nav-item">
             <a href="blog.php" class="nav-link">
@@ -73,17 +73,15 @@
             </a>
           </li>
 
-
              <li class="nav-item">
-            <a href="ekip.php" class="nav-link">
+            <a href="hakkimizda.php" class="nav-link">
               <i class="fas fa-users"></i>
               <p class="beyazyazi">
-                Ekibimiz
+                Hakkımızda
               </p>
             </a>
           </li>
           
-
              <li class="nav-item">
             <a href="kategori.php" class="nav-link">
               <i class="fas fa-ellipsis-v"></i>
@@ -92,7 +90,6 @@
               </p>
             </a>
           </li>
-
 
              <li class="nav-item">
             <a href="yorumlar.php" class="nav-link">
@@ -113,6 +110,9 @@
             </a>
           </li>
 
+
+            </ul>
+          
 
           </li>
         </ul>

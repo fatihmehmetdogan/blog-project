@@ -51,14 +51,10 @@ $ayarcek=$ayarsor->fetch(PDO::FETCH_ASSOC); # PDO ile güvenli bağlanti yapmam�
                     <input name="aciklama" value="<?php echo $ayarcek['ayar_aciklama'] ?>" type="text" class="form-control" placeholder="Lütfen sitenizin açıklamasını giriniz.">
                   </div>
 
-                 
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Site Anahtar Kelime</label>
-                    <input name="anahtar" value="<?php echo $ayarcek['ayar_anahtar'] ?>" type="text" class="form-control" placeholder="Lütfen sitenizin anahtar kelimelerini giriniz.">
-                  </div>
+            
                 
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Adresi</label>
+                    <label for="exampleInputEmail1">Site Adresi</label>
                     <input name="adres" value="<?php echo $ayarcek['ayar_adres'] ?>" type="text" class="form-control" placeholder="Lütfen adresinizi giriniz.">
                   </div>
                 

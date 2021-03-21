@@ -1,4 +1,5 @@
 <?php require_once 'header.php' ?>
+
 <br><br><br>
   <main id="main"> 
  
@@ -8,8 +9,7 @@
 
         <div class="row">
           <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
-            <img src="Admin/resimler/hakkimizda/<?php echo $hakkimizdacek['hakkimizda_resim'] ?>" 
-           class="img-fluid" alt=""> 
+            <img src="admin/resimler/hakkimizda/<?php echo $hakkimizdacek['hakkimizda_resim'] ?>" class="img-fluid" alt="">
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
             <h3><?php echo $hakkimizdacek['hakkimizda_baslik'] ?></h3>
