@@ -1,6 +1,14 @@
 # Blog-Project
+
 ### PHP ile yazılmış blog projesi uygulaması
 
+PHP 8.0.3 ile yazılmış 
+
+Sublime text 3 editörü kullanılmıştır
+
+Bu projenin çalışması için phpmyadmin ve apache server kurulu olması gerekmektedir
+
+Projenin sql komutları db klasörü içerisinde bulunmaktadır
 
 ## Uygulama Arayüz Çıktılar:
 
