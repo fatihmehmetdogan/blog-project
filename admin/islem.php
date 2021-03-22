@@ -157,17 +157,15 @@ else{
 	$kaydet=$baglanti->prepare("UPDATE slider SET
 
 slider_baslik=:slider_baslik,
-slider_aciklama=:slider_aciklama,
-slider_buton=:slider_buton,
-slider_link=:slider_link
+slider_aciklama=:slider_aciklama
+
 
 	");
 $update=$kaydet->execute(array(
 
 'slider_baslik'=>$_POST['baslik'],
-'slider_aciklama'=>$_POST['aciklama'],
-'slider_buton'=>$_POST['buton'],
-'slider_link'=>$_POST['link']
+'slider_aciklama'=>$_POST['aciklama']
+
 ));
 
 
@@ -560,7 +558,7 @@ icerik_baslik=:icerik_baslik,
 
 icerik_sira=:icerik_sira,
 icerik_aciklama=:icerik_aciklama,
-kategori_id=:kategori_id,
+kategori_id=:kategori_id
 
 WHERE icerik_id={$_POST['id']}
 
@@ -572,7 +570,7 @@ $update=$kaydet->execute(array(
 'icerik_baslik'=>htmlspecialchars($_POST['baslik']),
 'icerik_sira'=>htmlspecialchars($_POST['sira']),
 'icerik_aciklama'=>$_POST['aciklama'],
-'kategori_id'=>htmlspecialchars($_POST['katid']),
+'kategori_id'=>htmlspecialchars($_POST['katid'])
 ));
 if ($update) {
 Header("Location:icerik.php?katid=$katid&durum=okey");

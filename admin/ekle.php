@@ -34,12 +34,12 @@ require_once 'sidebar.php';
 
                   <div class="form-group">
                     <label for="exampleInputEmail1">Blog Başlık</label>
-                    <input name="baslik" type="text" class="form-control" placeholder="Lütfen ekip üye ismini giriniz.">
+                    <input name="baslik" type="text" class="form-control" placeholder="Lütfen blog başlığını giriniz.">
                   </div>
 
                   <div class="form-group">
                     <label for="exampleInputEmail1">Blog Sıra</label>
-                    <input name="sira" type="text" class="form-control" placeholder="Lütfen ekip üye ismini giriniz.">
+                    <input name="sira" type="text" class="form-control" placeholder="Lütfen blog sırasını giriniz.">
                   </div>
 
                   <div class="form-group">
@@ -96,7 +96,7 @@ require_once 'sidebar.php';
 
                   <div class="form-group">
                     <label for="exampleInputEmail1">Kategori Sıra</label>
-                    <input name="sira" type="text" class="form-control" placeholder="Lütfen ekip üye ismini giriniz.">
+                    <input name="sira" type="text" class="form-control" placeholder="Lütfen kategori sırasını giriniz.">
                   </div>
 
                   <div class="form-group">
