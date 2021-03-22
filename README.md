@@ -14,6 +14,8 @@ Projeyi çalıştırmadan önce htdocs klasörünün altına atınız
 
 Veritabanı dosyalarını ise blogdb dosyasını sırasıyla xampp/mysql/data klasörünün altına dosya olarak atınız
 
+Ayrıca projeye girdiğinizde admin kullanıcı maili ve şifresi -> fatih@gmail.com    123
+
 ![xampp](https://user-images.githubusercontent.com/46270592/111972499-97f2b200-8b0e-11eb-8b31-cd4232785667.PNG)
 
 
