@@ -52,6 +52,3 @@ $blogsor->execute(array());
   </main><!-- End #main -->
 
   <?php require_once 'footer.php'; ?>
-
-
- 

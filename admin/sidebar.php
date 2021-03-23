@@ -62,16 +62,6 @@
               </li>
             
 
-          </li>
-          <li class="nav-item">
-            <a href="blog.php" class="nav-link">
-              <i class="far fa-edit"></i>
-              <p class="beyazyazi">
-                Blog Yazıları
-              
-              </p>
-            </a>
-          </li>
 
              <li class="nav-item">
             <a href="hakkimizda.php" class="nav-link">
@@ -86,7 +76,7 @@
             <a href="kategori.php" class="nav-link">
               <i class="fas fa-ellipsis-v"></i>
               <p class="beyazyazi">
-                Kategoriler
+                BLOG Kategorilerİ
               </p>
             </a>
           </li>

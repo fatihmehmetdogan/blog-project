@@ -214,6 +214,18 @@ $kategoricek=$kategorisor->fetch(PDO::FETCH_ASSOC);
                   
                   
 
+                    <div class="form-group">
+                    <label for="exampleInputEmail1">kategori Resim</label>
+                    <img style="width: 150px" src="resimler/kategori/<?php echo $kategoricek['kategori_resim'] ?>">
+                  </div>
+                 
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">kategori Resim</label>
+                    <input name="resim"type="file"  class="form-control">
+                  </div>
+
+
+
                   <div class="form-group">
                     <label for="exampleInputEmail1">Kategori Başlık</label>
                     <input value="<?php echo $kategoricek['kategori_baslik'] ?>" 

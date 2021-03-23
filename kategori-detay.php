@@ -1,9 +1,10 @@
 <?php require_once 'header.php';
-$iceriksor=$baglanti->prepare("SELECT * FROM icerik where icerik_id=:icerik_id");
-$iceriksor->execute(array(
-'icerik_id'=>$_GET['icerik_id']
+
+
+$blogsor=$baglanti->prepare("SELECT * FROM blog where kategori_id=:kategori_id order by blog_sira ASC ");
+$blogsor->execute(array(
+'kategori_id'=>$_GET['kategori_id']
 ));
-$icerikcek=$iceriksor->fetch(PDO::FETCH_ASSOC);
 
 
  ?>
@@ -16,19 +17,19 @@ $icerikcek=$iceriksor->fetch(PDO::FETCH_ASSOC);
 
         <div class="row">
           <div class="col-lg-8">
-            <img src="admin/resimler/icerik/<?php echo $icerikcek['icerik_resim'] ?>" class="img-fluid" alt="">
-            <h3><?php echo $icerikcek['icerik_baslik'] ?>a</h3>
+            <img src="admin/resimler/blog/<?php echo $blogcek['blog_resim'] ?>" class="img-fluid" alt="">
+            <h3><?php echo $blogcek['blog_baslik'] ?>a</h3>
             <p>
-             <?php echo $icerikcek['icerik_aciklama'] ?>
+             <?php echo $blogcek['blog_aciklama'] ?>
             </p>
                               Yorumlar
 
      <?php
 
-$yorumlarsor=$baglanti->prepare("SELECT * FROM yorumlar  where yorum_kategori=:yorum_kategori and icerik_id=:icerik_id and yorum_onay=:yorum_onay ");
+$yorumlarsor=$baglanti->prepare("SELECT * FROM yorumlar  where yorum_kategori=:yorum_kategori and blog_id=:blog_id and yorum_onay=:yorum_onay ");
 $yorumlarsor->execute(array(
 'yorum_kategori'=>2,
-'icerik_id'=>$_GET['icerik_id'],
+'blog_id'=>$_GET['blog_id'],
 'yorum_onay'=>1
 
 ));
@@ -55,13 +56,13 @@ while ($yorumlarcek=$yorumlarsor->fetch(PDO::FETCH_ASSOC)) {
                 <textarea class="form-control" name="detay" rows="5" data-rule="required" data-msg="Mesajınızı yazın" placeholder="Mesajınız"></textarea>
                 <div class="validate"></div>
               </div>
-         <input type="hidden" name="id" value="<?php echo $icerikcek['icerik_id'] ?>">
+         <input type="hidden" name="id" value="<?php echo $blogcek['blog_id'] ?>">
         
        
 
 
          <input type="hidden" name="kategori" value="2">
-              <div class="text-center"><button name="icerikyorumkaydet" class="btn btn-info" type="submit">Gönder</button></div>
+              <div class="text-center"><button name="blogyorumkaydet" class="btn btn-info" type="submit">Gönder</button></div>
             </form>
 
           </div>
@@ -71,7 +72,7 @@ while ($yorumlarcek=$yorumlarsor->fetch(PDO::FETCH_ASSOC)) {
 
             <div class="course-info d-flex justify-content-between align-items-center">
               <h5>Eklenme Tarihi :</h5>
-              <p> <?php echo $icerikcek['icerik_zaman'] ?></p>
+              <p> <?php echo $blogcek['blog_zaman'] ?></p>
             </div>
 
             <div class="course-info d-flex justify-content-between align-items-center">

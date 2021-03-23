@@ -87,6 +87,10 @@ require_once 'sidebar.php';
               <form action="islem.php" method="post" enctype="multipart/form-data">
                 <div class="card-body">
                   
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Kategori Resim</label>
+                    <input name="resim"type="file"  class="form-control">
+                  </div>
                  
                   <div class="form-group">
                     <label for="exampleInputEmail1">Kategori Başlık</label>

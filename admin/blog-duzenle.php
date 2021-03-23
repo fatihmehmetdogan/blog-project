@@ -1,6 +1,12 @@
 <?php
 require_once 'header.php';
 require_once 'sidebar.php';
+
+$blogsor=$baglanti->prepare("SELECT * FROM blog where blog_id=:blog_id");
+$blogsor->execute(array(
+'blog_id'=>$_GET['id']
+));
+$blogcek=$blogsor->fetch(PDO::FETCH_ASSOC);
  ?>
 
 <div class="content-wrapper">
@@ -19,26 +25,31 @@ require_once 'sidebar.php';
               <!-- form start -->
               <form action="islem.php" method="post" enctype="multipart/form-data">
                 <div class="card-body">
-                
+                         <div class="form-group">
+                    <label for="exampleInputEmail1">İçerik Resim</label>
+                    <img style="width:150px" src="resimler/blog/<?php echo $blogcek['blog_resim'] ?>">
+                  </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">İçerik Resim</label>
                     <input name="resim"  type="file" class="form-control"  >
                   </div>
                    <div class="form-group">
                     <label for="exampleInputEmail1">İçerik başlık</label>
-                    <input name="baslik"  type="text" class="form-control"  placeholder="Lütfen başlık  giriniz.">
+                    <input value="<?php echo $blogcek['blog_baslik'] ?>" name="baslik"  type="text" class="form-control"  placeholder="Lütfen başlık  giriniz.">
                   </div> 
-             
+        <input type="hidden" name="katid" value="<?php echo $blogcek['kategori_id'] ?>">
                     <div class="form-group">
                     <label for="exampleInputEmail1">İçerik sıra</label>
-                    <input name="sira"  type="text" class="form-control"  placeholder="Lütfen sıra  giriniz.">
+                    <input value="<?php echo $blogcek['blog_sira'] ?>" name="sira"  type="text" class="form-control"  placeholder="Lütfen sıra  giriniz.">
                   </div> 
                      <div class="form-group">
                     <label for="exampleInputEmail1">İçerik Açıklama</label>
-                    <textarea name="aciklama" id="editor1" class="ckeditor"></textarea>
-                  </div>
+                    <textarea name="aciklama" id="editor1" class="ckeditor">
+                      <?php echo $blogcek['blog_aciklama'] ?> 
+                    </textarea>
+                  </div> 
                    
-                  <input type="hidden" name="katid" value="<?php echo $_GET['katid'] ?>">
+                  <input type="hidden" name="id" value="<?php echo $blogcek['blog_id'] ?>">
 
                     
                    
@@ -46,7 +57,7 @@ require_once 'sidebar.php';
                 <!-- /.card-body -->
  
                 <div class="card-footer">
-                  <button name="icerikkaydet" style="float:right" type="submit" class="btn btn-primary">Kaydet</button>
+                  <button name="blogduzenle" style="float:right" type="submit" class="btn btn-primary">Kaydet</button>
                 </div>
               </form> 
             </div>

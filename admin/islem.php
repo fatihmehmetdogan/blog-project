@@ -31,10 +31,6 @@ Header("Location:ayarlar.php?sayfa=ayarlar&durum=okey");   #yönlendirme
 
 
 
-
-
-
-
 if (isset($_POST['hakkimizdakaydet'])) {
 
 if ($_FILES['resim'] ["size"]>0) {
@@ -105,10 +101,7 @@ Header("Location:hakkimizda.php?durum=okey");
 
 
 
-
-
-
-if (isset($_POST['sliderkaydet'])) {     # ayarkaydet adında bi name var mı böyle bi değer geliyorsa
+if (isset($_POST['sliderkaydet'])) {     
 
 if ($_FILES['resim'] ["size"]>0) {  #resim yükleme
 	
@@ -186,7 +179,7 @@ Header("Location:slider.php?durum=okey");   #yönlendirme
 
 
 
-
+/*
 
 
 if (isset($_POST['blogkaydet'])) {    
@@ -232,7 +225,7 @@ Header("Location:blog.php?durum=okey");   #yönlendirme
 
 
 
-if (isset($_POST['blogduzenle'])) {     # ayarkaydet adında bi name var mı böyle bi değer geliyorsa
+if (isset($_POST['blogduzenle'])) {     
 
 if ($_FILES['resim'] ["size"]>0) {  #resim yükleme
 	
@@ -313,7 +306,6 @@ Header("Location:blog.php?durum=okey");   #yönlendirme
 
 
 
-
 # silme
 
 if (isset($_POST['blogsil'])) {
@@ -337,6 +329,7 @@ else{
 }
 }
 
+*/
 
 
 
@@ -346,28 +339,226 @@ else{
 
 
 
+if (isset($_POST['blogkaydet'])) {
+	$katid=$_POST['katid'];
+	$uploads_dir='resimler/blog';
+@$tmp_name=$_FILES['resim'] ["tmp_name"];
+@$name=$_FILES['resim'] ["name"];
+
+$sayi1=rand(1,10000000);
+$sayi2=rand(1,10000000);
+$sayi3=rand(1,10000000);
+$sayilar=$sayi1.$sayi2.$sayi3;
+$resimadi=$sayilar.$name;
+@move_uploaded_file($tmp_name, "$uploads_dir/$resimadi");
 
 
-if (isset($_POST['kategorikaydet'])) {     # kategorikaydet adında bi name var mı böyle bi değer geliyorsa
-$kaydet=$baglanti->prepare("INSERT into  kategori SET             #kategori sayfasına yükleme
+$kaydet=$baglanti->prepare("INSERT into blog SET 
 
-kategori_baslik=:kategori_baslik,
-kategori_sira=:kategori_sira,
-kategori_durum=:kategori_durum
+
+blog_baslik=:blog_baslik,
+blog_sira=:blog_sira,
+blog_aciklama=:blog_aciklama,
+kategori_id=:kategori_id,
+blog_resim=:blog_resim
 	");
 $insert=$kaydet->execute(array(
 
-'kategori_baslik'=>htmlspecialchars($_POST['baslik']),          #ekle.php den name lerini alıyorum
-'kategori_sira'=>htmlspecialchars($_POST['sira']),
-'kategori_durum'=>htmlspecialchars($_POST['durum'])
+'blog_baslik'=>htmlspecialchars($_POST['baslik']),
+'blog_sira'=>htmlspecialchars($_POST['sira']),
+'blog_aciklama'=>$_POST['aciklama'],
+'kategori_id'=>htmlspecialchars($_POST['katid']),
+'blog_resim'=>$resimadi
 ));
 
+
 if ($insert) {
-Header("Location:kategori.php?durum=okey");          #başarılıysa hangi sayfaya yönlendirildiği
+Header("Location:blog.php?katid=$katid&durum=okey");
 }else{
-	Header("Location:kategori.php?durum=no");   
+	Header("Location:blog.php?katid=$katid&durum=no");
 }
-} 
+
+}
+
+
+
+
+if (isset($_POST['blogsil'])) {
+	$katid=$_POST['katid'];
+$eskiresim=$_POST['eskiresim'];
+	unlink("resimler/blog/$eskiresim");
+
+$sil=$baglanti->prepare("DELETE  FROM blog where blog_id=:blog_id");
+$sil->execute(array(
+
+'blog_id'=>$_POST['id']
+));
+
+
+if ($sil) {
+	Header("Location:blog.php?katid=$katid&durum=okey");
+}
+else{
+		Header("Location:blog.php?katid=$katid&durum=no");
+
+}
+}
+
+
+
+
+
+
+
+if (isset($_POST['blogduzenle'])) {
+$katid=$_POST['katid'];
+if ($_FILES['resim'] ["size"]>0) {
+
+$uploads_dir='resimler/blog';
+@$tmp_name=$_FILES['resim'] ["tmp_name"];
+@$name=$_FILES['resim'] ["name"];
+
+$sayi1=rand(1,10000000);
+$sayi2=rand(1,10000000);
+$sayi3=rand(1,10000000);
+$sayilar=$sayi1.$sayi2.$sayi3;
+$resimadi=$sayilar.$name;
+@move_uploaded_file($tmp_name, "$uploads_dir/$resimadi");
+
+
+$kaydet=$baglanti->prepare("UPDATE blog SET 
+blog_baslik=:blog_baslik,
+
+blog_sira=:blog_sira,
+blog_aciklama=:blog_aciklama,
+kategori_id=:kategori_id,
+blog_resim=:blog_resim
+
+WHERE blog_id={$_POST['id']}
+	");
+$update=$kaydet->execute(array(
+
+
+
+'blog_baslik'=>htmlspecialchars($_POST['baslik']),
+'blog_sira'=>htmlspecialchars($_POST['sira']),
+'blog_aciklama'=>$_POST['aciklama'],
+'kategori_id'=>htmlspecialchars($_POST['katid']),
+'blog_resim'=>$resimadi
+
+));
+
+
+if ($update) {
+	$eskiresim=$_POST['eskiresim'];
+	unlink("resimler/blog/$eskiresim");
+Header("Location:blog.php?katid=$katid&durum=okey");
+}else{
+Header("Location:blog.php?katid=$katid&durum=no");
+}
+
+}
+
+else{
+
+$kaydet=$baglanti->prepare("UPDATE blog SET 
+blog_baslik=:blog_baslik,
+blog_sira=:blog_sira,
+blog_aciklama=:blog_aciklama,
+kategori_id=:kategori_id
+
+WHERE blog_id={$_POST['id']}
+
+	");
+$update=$kaydet->execute(array(
+
+
+
+'blog_baslik'=>htmlspecialchars($_POST['baslik']),
+'blog_sira'=>htmlspecialchars($_POST['sira']),
+'blog_aciklama'=>$_POST['aciklama'],
+'kategori_id'=>htmlspecialchars($_POST['katid'])
+));
+if ($update) {
+Header("Location:blog.php?katid=$katid&durum=okey");
+}else{
+Header("Location:blog.php?katid=$katid&durum=no");
+}
+
+}
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+if (isset($_POST['kategorikaydet'])) {
+	$katid=$_POST['katid'];
+	$uploads_dir='resimler/kategori';
+@$tmp_name=$_FILES['resim'] ["tmp_name"];
+@$name=$_FILES['resim'] ["name"];
+
+$sayi1=rand(1,10000000);
+$sayi2=rand(1,10000000);
+$sayi3=rand(1,10000000);
+$sayilar=$sayi1.$sayi2.$sayi3;
+$resimadi=$sayilar.$name;
+@move_uploaded_file($tmp_name, "$uploads_dir/$resimadi");
+
+
+$kaydet=$baglanti->prepare("INSERT into kategori SET 
+
+
+kategori_baslik=:kategori_baslik,
+kategori_sira=:kategori_sira,
+kategori_id=:kategori_id,
+kategori_durum=:kategori_durum,
+kategori_resim=:kategori_resim
+	");
+$insert=$kaydet->execute(array(
+
+'kategori_baslik'=>htmlspecialchars($_POST['baslik']),
+'kategori_sira'=>htmlspecialchars($_POST['sira']),
+'kategori_id'=>htmlspecialchars($_POST['katid']),
+'kategori_durum'=>htmlspecialchars($_POST['durum']),
+'kategori_resim'=>$resimadi
+));
+
+
+if ($insert) {
+Header("Location:kategori.php?katid=$katid&durum=okey");
+}else{
+	Header("Location:kategori.php?katid=$katid&durum=no");
+}
+
+}
+
 
 
 
@@ -382,16 +573,18 @@ $duzenle=$baglanti->prepare("UPDATE  kategori SET
 
 kategori_baslik=:kategori_baslik,
 kategori_sira=:kategori_sira,
-kategori_durum=:kategori_durum
+kategori_durum=:kategori_durum,
+kategori_resim=:kategori_resim
 
 WHERE kategori_id={$_POST['id']}
 	");
 
 $update=$duzenle->execute(array(
 
-'kategori_baslik'=>htmlspecialchars($_POST['baslik']),          #ekle.php den name lerini alıyorum
+'kategori_baslik'=>htmlspecialchars($_POST['baslik']),          
 'kategori_sira'=>htmlspecialchars($_POST['sira']),
-'kategori_durum'=>htmlspecialchars($_POST['durum'])
+'kategori_durum'=>htmlspecialchars($_POST['durum']),
+'kategori_resim'=>$resimadi
 ));
 
 if ($update) {
@@ -407,27 +600,37 @@ Header("Location:kategori.php?durum=okey");          #başarılıysa hangi sayfa
 
 
 
+
+
+
+
+
+
+
+
 if (isset($_GET['kategorisil'])) {
-	
+	$katid=$_GET['katid'];
+$eskiresim=$_GET['eskiresim'];
+	unlink("resimler/kategori/$eskiresim");
 
 $sil=$baglanti->prepare("DELETE  FROM kategori where kategori_id=:kategori_id");
 $sil->execute(array(
 
 'kategori_id'=>$_GET['id']
-
 ));
 
+
 if ($sil) {
-	Header("Location:kategori.php?durum=okey");
+	Header("Location:kategori.php?katid=$katid&durum=okey");
 }
 else{
-	Header("Location:kategori.php?durum=no");
+		Header("Location:kategori.php?katid=$katid&durum=no");
 
 }
 }
 
 
-
+/*
 
 
 if (isset($_POST['icerikkaydet'])) {
@@ -473,7 +676,7 @@ Header("Location:icerik.php?katid=$katid&durum=okey");
 }
 
 
-
+*//*
 
 if (isset($_POST['iceriksil'])) {
 	$katid=$_POST['katid'];
@@ -540,7 +743,7 @@ $update=$kaydet->execute(array(
 
 ));
 
-
+*//*
 if ($update) {
 	$eskiresim=$_POST['eskiresim'];
 	unlink("resimler/icerik/$eskiresim");
@@ -582,6 +785,35 @@ Header("Location:icerik.php?katid=$katid&durum=no");
 
 
 }
+
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -1,7 +1,7 @@
 <?php require_once 'header.php';
 
-      $iceriksor=$baglanti->prepare("SELECT * FROM icerik where kategori_id=:kategori_id order by icerik_sira ASC ");
-$iceriksor->execute(array(
+$blogsor=$baglanti->prepare("SELECT * FROM blog where kategori_id=:kategori_id order by blog_sira ASC ");
+$blogsor->execute(array(
 'kategori_id'=>$_GET['kategori_id']
 ));
 
@@ -18,20 +18,25 @@ $iceriksor->execute(array(
       <div class="container" data-aos="fade-up">
 
         <div class="row" data-aos="zoom-in" data-aos-delay="100">
-<?php while ($icerikcek=$iceriksor->fetch(PDO::FETCH_ASSOC)) {  ?>
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+
+
+<?php
+
+$kategorisor=$baglanti->prepare("SELECT * FROM kategori order by kategori_sira ASC");
+$kategorisor->execute(array());
+
+while ($kategoricek=$kategorisor->fetch(PDO::FETCH_ASSOC)) {
+?>
+<div class="col-lg-4 col-md-6 d-flex align-items-stretch">
             <div class="course-item">
-              <img style="height:250px" src="Admin/resimler/icerik/<?php echo $icerikcek['icerik_resim'] ?>" class="img-fluid" alt="...">
+              <img style="height: 250px" src="admin/resimler/kategori/<?php echo $kategoricek['kategori_resim'] ?>" class="img-fluid" alt="...">
               <div class="course-content">
-               
 
-                <h3><a href="icerik-detay-<?=seo($icerikcek['icerik_baslik']).'-'.$icerikcek['icerik_id'] ?>"><?php echo $icerikcek['icerik_baslik'] ?></a></h3>
-                <p><?php 
-                     $aciklama=$icerikcek['icerik_aciklama'];
-                     $bolaciklama=substr($aciklama, 0,50);
 
-                       echo $bolaciklama;
-                 ?></p>
+              <li><a href="kategori-detay-<?=seo($kategoricek['kategori_baslik']).'-'.$kategoricek['kategori_id'] ?>"><?php echo $kategoricek['kategori_baslik'] ?></a></li>
+              
+            </ul>
+          </li>
             
 
 

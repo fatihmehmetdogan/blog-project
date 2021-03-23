@@ -62,25 +62,15 @@ $slidercek=$slidersor->fetch(PDO::FETCH_ASSOC);
           <li><a href="hakkimizda.php">Hakkımızda</a></li>
           <!--<li><a href="ekip.php">Ekibimiz</a></li>-->
           <!--<li><a href="galeri.php">Galeri</a></li>-->
-          <li><a href="blog.php">Blog</a></li>
+         <!-- <li><a href="blog.php">Blog</a></li>-->
           
-          <li class="drop-down"><a href="">Kategoriler</a>
-            <ul>
-<?php
 
-$kategorisor=$baglanti->prepare("SELECT * FROM kategori order by kategori_sira ASC");
-$kategorisor->execute(array());
+        <li> <a href="kategori.php">Kategoriler</a>
+            
 
-while ($kategoricek=$kategorisor->fetch(PDO::FETCH_ASSOC)) {
-?>
-
-              <li><a href="kategori-detay-<?=seo($kategoricek['kategori_baslik']).'-'.$kategoricek['kategori_id'] ?>"><?php echo $kategoricek['kategori_baslik'] ?></a></li>
-              <?php } ?>
-            </ul>
-          </li>
           <li><a href="iletisim.php">İletişim</a></li>
 
-        </ul>
+        
       </nav><!-- .nav-menu -->
 
     

@@ -37,21 +37,26 @@
         </div>
         <div class="card-body p-0">
           <!-- ekle butonunda ekle.php ye yönlendirme -->
-           <a href="ekle.php?sayfa=kategori"> <button style="float: right" class="btn btn-info">Yeni Ekle</button></a>
+           <a href="ekle.php?sayfa=kategori"> <button style="float: right" class="btn btn-info">Yeni KATEGORİ Ekle</button></a>
           <table class="table table-striped projects">
               <thead>
 
                   <tr>
-                      <th>
-                          Sıra
+                    <th>
+                          Resim
                       </th>
                       <th>
                           Başlık
                       </th>
                       <th>
+                          Sıra
+                      </th>
+                      <th>
+                          Zaman
+                      </th>
+                    <th>
                           Durum
                       </th>
-                    
                       <th>
                       </th>
                   </tr>
@@ -71,16 +76,19 @@ while ($kategoricek=$kategorisor->fetch(PDO::FETCH_ASSOC)) {
 
 
                   <tr>
+                     <td><img style="width:150px" src="resimler/kategori/<?php echo $kategoricek['kategori_resim'] ?>"></td>
+                          <td><?php echo $kategoricek['kategori_baslik'] ?></td>
+                      
                       <td>
                           <?php echo $kategoricek['kategori_sira'] ?>
                       </td>
                       <td>
                           <a>
-                              <?php echo $kategoricek['kategori_baslik'] ?>
+                              <?php echo $kategoricek['kategori_zaman'] ?>
                           </a>
                           <br/>
                           <small>
-                              <?php echo $kategoricek['kategori_zaman'] ?>
+                              <?php echo $kategoricek['kategori_durum'] ?>
                           </small>
                       </td>
                       
@@ -100,7 +108,7 @@ while ($kategoricek=$kategorisor->fetch(PDO::FETCH_ASSOC)) {
                           
                       </td>
                       <td class="project-actions text-right">
-                          <a class="btn btn-primary btn-sm" href="icerik.php?katid=<?php echo 
+                          <a class="btn btn-primary btn-sm" href="blog.php?katid=<?php echo 
                           $kategoricek['kategori_id']?>">
                               <i class="fas fa-folder">
                               </i>
