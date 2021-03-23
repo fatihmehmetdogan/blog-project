@@ -19,33 +19,36 @@ $blogcek=$blogsor->fetch(PDO::FETCH_ASSOC);
 <div class="card card-primary">
 
               <div class="card-header">
-                <h3 class="card-title">İçerik</h3>
+                <h3 class="card-title">blog</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
               <form action="islem.php" method="post" enctype="multipart/form-data">
                 <div class="card-body">
                          <div class="form-group">
-                    <label for="exampleInputEmail1">İçerik Resim</label>
+                    <label for="exampleInputEmail1">BLOG Resim</label>
                     <img style="width:150px" src="resimler/blog/<?php echo $blogcek['blog_resim'] ?>">
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputEmail1">İçerik Resim</label>
-                    <input name="resim"  type="file" class="form-control"  >
+                    <label for="exampleInputEmail1">BLOG Resim</label>
+                    <input name="resim"  type="file" class="form-control">
                   </div>
                    <div class="form-group">
-                    <label for="exampleInputEmail1">İçerik başlık</label>
+                    <label for="exampleInputEmail1">BLOG başlık</label>
                     <input value="<?php echo $blogcek['blog_baslik'] ?>" name="baslik"  type="text" class="form-control"  placeholder="Lütfen başlık  giriniz.">
                   </div> 
-        <input type="hidden" name="katid" value="<?php echo $blogcek['kategori_id'] ?>">
+
+          <input type="hidden" name="katid" value="<?php echo $blogcek['kategori_id']?>">
+
+
                     <div class="form-group">
-                    <label for="exampleInputEmail1">İçerik sıra</label>
+                    <label for="exampleInputEmail1">BLOG sıra</label>
                     <input value="<?php echo $blogcek['blog_sira'] ?>" name="sira"  type="text" class="form-control"  placeholder="Lütfen sıra  giriniz.">
                   </div> 
                      <div class="form-group">
-                    <label for="exampleInputEmail1">İçerik Açıklama</label>
+                    <label for="exampleInputEmail1">BLOG Açıklama</label>
                     <textarea name="aciklama" id="editor1" class="ckeditor">
-                      <?php echo $blogcek['blog_aciklama'] ?> 
+                       <?php echo $blogcek['blog_aciklama'] ?> 
                     </textarea>
                   </div> 
                    

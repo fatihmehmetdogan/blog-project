@@ -38,7 +38,14 @@ require_once 'sidebar.php';
                     <textarea name="aciklama" id="editor1" class="ckeditor"></textarea>
                   </div>
                    
+                 
                   <input type="hidden" name="katid" value="<?php echo $_GET['katid'] ?>">
+
+    <label><input type="checkbox" name="katid[]" value="katid"/> PHP</label><br/>
+    <label><input type="checkbox" name="katid[]" value="katid"/> SQL</label><br/>
+    <label><input type="checkbox" name="katid[]" value="katid"/> YAPAY ZEKA</label><br/>
+    <label><input type="checkbox" name="katid[]" value="katid"/> YAZILIM</label><br/>
+    
 
                     
                    

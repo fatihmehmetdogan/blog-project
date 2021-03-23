@@ -1,8 +1,10 @@
 <?php require_once 'header.php';
 
-$blogsor=$baglanti->prepare("SELECT * FROM blog where kategori_id=:kategori_id order by blog_sira ASC ");
+$blogsor=$baglanti->prepare("SELECT *
+FROM blog
+LEFT JOIN blog_to_kategori ON blog.blog_id = blog_to_kategori.blog_id
+ORDER BY blog.blog_id; ");
 $blogsor->execute(array(
-'kategori_id'=>$_GET['kategori_id']
 ));
 
 # kategori sayfasını içerik sayfası olarak kullanmasını yaptım
