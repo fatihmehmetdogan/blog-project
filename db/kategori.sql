@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: 127.0.0.1
--- Üretim Zamanı: 21 Mar 2021, 23:32:01
+-- Üretim Zamanı: 23 Mar 2021, 11:41:59
 -- Sunucu sürümü: 10.4.18-MariaDB
 -- PHP Sürümü: 8.0.3
 
@@ -32,17 +32,20 @@ CREATE TABLE `kategori` (
   `kategori_baslik` varchar(240) COLLATE utf8_turkish_ci NOT NULL,
   `kategori_sira` int(11) NOT NULL,
   `kategori_durum` int(11) NOT NULL,
-  `kategori_zaman` timestamp NOT NULL DEFAULT current_timestamp()
+  `kategori_zaman` timestamp NOT NULL DEFAULT current_timestamp(),
+  `kategori_resim` varchar(280) COLLATE utf8_turkish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
 
 --
 -- Tablo döküm verisi `kategori`
 --
 
-INSERT INTO `kategori` (`kategori_id`, `kategori_baslik`, `kategori_sira`, `kategori_durum`, `kategori_zaman`) VALUES
-(2, 'PHP', 1, 1, '2021-03-19 07:41:12'),
-(6, 'SQL', 2, 1, '2021-03-19 08:03:21'),
-(14, 'Web', 3, 1, '2021-03-19 09:25:43');
+INSERT INTO `kategori` (`kategori_id`, `kategori_baslik`, `kategori_sira`, `kategori_durum`, `kategori_zaman`, `kategori_resim`) VALUES
+(31, 'PHP', 1, 1, '2021-03-23 09:29:58', '22749768762407226221about.jpg'),
+(32, 'Yapay Zeka', 2, 1, '2021-03-23 09:30:12', '96044258654612522260apple-touch-icon.png'),
+(33, 'SQL', 3, 1, '2021-03-23 10:02:17', '1850151860535907871course-details-tab-5.png'),
+(34, 'Yazılım', 4, 1, '2021-03-23 10:04:44', '2543754727918438553course-2.jpg'),
+(35, 'abc', 1, 1, '2021-03-23 10:25:46', '300475236102662170555testimonials-5.jpg');
 
 --
 -- Dökümü yapılmış tablolar için indeksler
@@ -62,7 +65,7 @@ ALTER TABLE `kategori`
 -- Tablo için AUTO_INCREMENT değeri `kategori`
 --
 ALTER TABLE `kategori`
-  MODIFY `kategori_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `kategori_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
