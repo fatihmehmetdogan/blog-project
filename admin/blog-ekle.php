@@ -1,7 +1,29 @@
 <?php
 require_once 'header.php';
 require_once 'sidebar.php';
+require_once 'baglanti.php';
+
+
+$kategoriBaglanti=$baglanti->prepare("SELECT * FROM kategori");
+$kategoriBaglanti->execute(array());
+$kategoriler=$kategoriBaglanti->fetch(PDO::FETCH_ASSOC);
+
+
+foreach($kategoriler as $kategori) {
+  echo '<label><input type="checkbox" 
+    name="katid[]" value="'.$kategori['kategori_id'].'"/>'.$kategori['kategori_baslik'].'</label><br/>';
+}
+
+
  ?>
+
+
+
+
+
+
+
+
 
 <div class="content-wrapper">
  
@@ -20,17 +42,20 @@ require_once 'sidebar.php';
               <form action="islem.php" method="post" enctype="multipart/form-data">
                 <div class="card-body">
                 
+
+
+
                   <div class="form-group">
                     <label for="exampleInputEmail1">BLOG Resim</label>
                     <input name="resim"  type="file" class="form-control"  >
                   </div>
                    <div class="form-group">
-                    <label for="exampleInputEmail1">BLOGbaşlık</label>
+                    <label for="exampleInputEmail1">BLOG başlık</label>
                     <input name="baslik"  type="text" class="form-control"  placeholder="Lütfen başlık  giriniz.">
                   </div> 
              
                     <div class="form-group">
-                    <label for="exampleInputEmail1">İBLOG sıra</label>
+                    <label for="exampleInputEmail1">BLOG sıra</label>
                     <input name="sira"  type="text" class="form-control"  placeholder="Lütfen sıra  giriniz.">
                   </div> 
                      <div class="form-group">
@@ -39,12 +64,7 @@ require_once 'sidebar.php';
                   </div>
                    
                  
-                  <input type="hidden" name="katid" value="<?php echo $_GET['katid'] ?>">
-
-    <label><input type="checkbox" name="katid[]" value="katid"/> PHP</label><br/>
-    <label><input type="checkbox" name="katid[]" value="katid"/> SQL</label><br/>
-    <label><input type="checkbox" name="katid[]" value="katid"/> YAPAY ZEKA</label><br/>
-    <label><input type="checkbox" name="katid[]" value="katid"/> YAZILIM</label><br/>
+          
     
 
                     

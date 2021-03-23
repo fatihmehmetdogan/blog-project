@@ -1,11 +1,7 @@
 <?php require_once 'header.php';
 require_once 'sidebar.php';
-$blogsor=$baglanti->prepare("SELECT *
-FROM blog LEFT JOIN blog_to_kategori ON blog.blog_id = blog_to_kategori.blog_id ORDER BY blog.blog_id");
-$blogsor->execute(array(
-
-
-));
+$blogsor=$baglanti->prepare("SELECT * FROM blog order by blog_sira ");
+$blogsor->execute(array());
 
  
  ?>
@@ -28,30 +24,19 @@ if (@$_GET['durum']=="okey") { ?>
           <div class="col-12">
             <div class="card">          
               <div class="card-header">
-                <h3 class="card-title">Kategori</h3>
-                <a href="blog-ekle.php?katid=<?php echo $_GET['katid'] ?>">
+                <h3 class="card-title">BLOG</h3>
+                <a href="blog-ekle.php?katid=<">
 <button style="float:right" type="submit" class="btn btn-info">Yeni BLOG ekle</button></a>
-           <!-- 
-     <div class="card-tools">
-                  <div class="input-group input-group-sm" style="width: 150px;">
-                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-                    <div class="input-group-append">
-                      <button type="submit" class="btn btn-default">
-                        <i class="fas fa-search"></i>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-           -->
+          
               </div>
-              <!-- /.card-header -->
+             
               <div class="card-body table-responsive p-0">
                 <table class="table table-hover text-nowrap">
                   <thead>
                     <tr>
-                      <th>Kategori Resim</th>
-                       <th>Kategori Başlık</th>
-                      <th>Kategori Sıra</th>
+                      <th>BLOG Resim</th>
+                       <th>BLOG Başlık</th>
+                      <th>BLOG Sıra</th>
                     
                       <th>Düzenle</th>
                       <th>Sil</th>
@@ -75,7 +60,7 @@ while ($blogcek=$blogsor->fetch(PDO::FETCH_ASSOC)) { ?>
                           <input name="id" value="<?php echo $blogcek['blog_id'] ?>" type="hidden">
                            <input name="eskiresim" value="<?php echo $blogcek['blog_resim'] ?>" type="hidden">
 
-                                  <input name="katid" value="<?php echo $blogcek['kategori_id'] ?>" type="hidden">
+                                  
                            </form>
 
 

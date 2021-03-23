@@ -61,22 +61,22 @@
                 </a>
               </li>
             
-
-
-             <li class="nav-item">
-            <a href="hakkimizda.php" class="nav-link">
+            <li class="nav-item">
+            <a href="blog.php" class="nav-link">
               <i class="fas fa-users"></i>
               <p class="beyazyazi">
-                Hakkımızda
+                BLOGLAR
               </p>
             </a>
           </li>
+
+         
           
              <li class="nav-item">
             <a href="kategori.php" class="nav-link">
               <i class="fas fa-ellipsis-v"></i>
               <p class="beyazyazi">
-                BLOG Kategorilerİ
+                KATEGORİLER
               </p>
             </a>
           </li>

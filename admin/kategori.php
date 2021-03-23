@@ -1,146 +1,85 @@
 <?php require_once 'header.php';
-  require_once 'sidebar.php';
+require_once 'sidebar.php';
+$kategorisor=$baglanti->prepare("SELECT * FROM kategori order by kategori_sira ");
+$kategorisor->execute(array(
+));
 
+ 
  ?>
 
-  
 
-  <!-- Content Wrapper. Contains page content -->
+
   <div class="content-wrapper">
-  
-
-    <!-- Main content -->
-    <section class="content">
-
-      <!-- Default box -->
-      <div class="card">
-        <div class="card-header">
-          <h3 class="card-title">KATEGORİLER</h3>
-
-  <?php 
-              if (@$_GET['durum']=="okey") { ?>
-                <p style="color:green; ">İşlem Başarılı</p><br>
-              <?php } elseif (@$_GET['durum']=="no") { ?>
-                <p style="color:red; ">İşlem Başarısız</p>  
-                
-             <?php } ?>
-
-
-          <div class="card-tools">
-            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-              <i class="fas fa-minus"></i>
-            </button>
-            <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-              <i class="fas fa-times"></i>
-            </button>
-          </div>
-        </div>
-        <div class="card-body p-0">
-          <!-- ekle butonunda ekle.php ye yönlendirme -->
-           <a href="ekle.php?sayfa=kategori"> <button style="float: right" class="btn btn-info">Yeni KATEGORİ Ekle</button></a>
-          <table class="table table-striped projects">
-              <thead>
-
-                  <tr>
-                    <th>
-                          Resim
-                      </th>
-                      <th>
-                          Başlık
-                      </th>
-                      <th>
-                          Sıra
-                      </th>
-                      <th>
-                          Zaman
-                      </th>
-                    <th>
-                          Durum
-                      </th>
-                      <th>
-                      </th>
-                  </tr>
-              </thead>
-              <tbody>
-
-<?php 
-
-$kategorisor=$baglanti->prepare("SELECT * FROM kategori order by kategori_sira ASC");
-$kategorisor->execute(array());
-
-while ($kategoricek=$kategorisor->fetch(PDO::FETCH_ASSOC)) {
-
-
-?>
-
-
-
-                  <tr>
-                     <td><img style="width:150px" src="resimler/kategori/<?php echo $kategoricek['kategori_resim'] ?>"></td>
-                          <td><?php echo $kategoricek['kategori_baslik'] ?></td>
-                      
-                      <td>
-                          <?php echo $kategoricek['kategori_sira'] ?>
-                      </td>
-                      <td>
-                          <a>
-                              <?php echo $kategoricek['kategori_zaman'] ?>
-                          </a>
-                          <br/>
-                          <small>
-                              <?php echo $kategoricek['kategori_durum'] ?>
-                          </small>
-                      </td>
-                      
-                      
-                      <td>
-                        <?php if ($kategoricek['kategori_durum']=="1") { ?>
-                          <span class="badge badge-success">Aktif</span>
-                        
  
-                         <?php }else{ ?>
-                        <span class="badge badge-danger">Pasif</span>
+    <section class="content">
+      <div class="container-fluid">
+     
+        <div class="row">
+       <?php
+if (@$_GET['durum']=="okey") { ?>
+  <p style="color:green ; ">İşlem başarılı</p>
+<?php } elseif (@$_GET['durum']=="no") { ?>
+  <p style="color:red ; ">İşlem başarısız</p>
 
-                        <?php } ?>
+<?php }  ?>
+          <div class="col-12">
+            <div class="card">          
+              <div class="card-header">
+                <h3 class="card-title">kategori</h3>
+                <a href="kategori-ekle.php?katid=<">
+<button style="float:right" type="submit" class="btn btn-info">Yeni kategori ekle</button></a>
+          
+              </div>
+             
+              <div class="card-body table-responsive p-0">
+                <table class="table table-hover text-nowrap">
+                  <thead>
+                    <tr>
+                      <th>kategori Resim</th>
+                       <th>kategori Başlık</th>
+                      <th>kategori Sıra</th>
+                    
+                      <th>Düzenle</th>
+                      <th>Sil</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php 
+
+while ($kategoricek=$kategorisor->fetch(PDO::FETCH_ASSOC)) { ?>
+         
+                    <tr>
+                      <td><img style="width:150px" src="resimler/kategori/<?php echo $kategoricek['kategori_resim'] ?>"></td>
+                          <td><?php echo $kategoricek['kategori_baslik'] ?></td>
+                      <td><?php echo $kategoricek['kategori_sira'] ?></td>
+                     
+                    
+                      <td><a href="kategori-duzenle.php?id=<?php echo $kategoricek['kategori_id'] ?>"><button type="submit" class="btn btn-success">Düzenle</button></td>
+                         <td>
+                           <form action="islem.php" method="post">
+                          <button  name="kategorisil" type="submit" class="btn btn-danger">Sil</button>
+                          <input name="id" value="<?php echo $kategoricek['kategori_id'] ?>" type="hidden">
+                           <input name="eskiresim" value="<?php echo $kategoricek['kategori_resim'] ?>" type="hidden">
+
+                                  
+                           </form>
 
 
-
-                          
-                      </td>
-                      <td class="project-actions text-right">
-                          <a class="btn btn-primary btn-sm" href="blog.php?katid=<?php echo 
-                          $kategoricek['kategori_id']?>">
-                              <i class="fas fa-folder">
-                              </i>
-                              Görüntüle
-                          </a>
-                          <a class="btn btn-success btn-sm" href="duzenle.php?sayfa=kategori&id=<?php 
-                          echo $kategoricek['kategori_id']?>">
-                              <i class="fas fa-pencil-alt">
-                              </i>
-                              Düzenle
-                          </a>
-                          <a class="btn btn-danger btn-sm" href="islem.php?kategorisil&id=<?php echo $kategoricek['kategori_id'] ?>">
-                              <i class="fas fa-trash">
-                              </i>
-                              Sil
-                          </a>
-                      </td>
-                  </tr>
-                  
-                  <?php } ?>
-                  
-                  
-              </tbody>
-          </table>
+                        </td>
+                    </tr>
+                   <?php } ?>
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+ 
         </div>
-        <!-- /.card-body -->
+    
       </div>
-      <!-- /.card -->
-
     </section>
     <!-- /.content -->
   </div>
-  <!-- /.content-wrapper -->
-
-  <?php require_once 'footer.php'; ?>
+<?php require_once 'footer.php'; ?>
