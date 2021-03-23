@@ -3,23 +3,15 @@
     <strong style="color:black">2020 -<?php echo date('Y') ?> <a href="https://Blogweb.com">Blogweb</a></strong>
     <b style="color: black">Tüm Hakları Saklıdır.</b>
     <div class="float-right d-none d-sm-inline-block">
-      
     </div>
   </footer>
 
-  <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
   </aside>
-  <!-- /.control-sidebar -->
 </div>
-<!-- ./wrapper -->
 <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
-<!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
-<!-- jQuery UI 1.11.4 -->
 <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
-<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
   $.widget.bridge('uibutton', $.ui.button)
 </script>

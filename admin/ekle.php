@@ -3,34 +3,24 @@ require_once 'sidebar.php';
 
 ?>
 <!-- get ile gelen sayfa değeri ekip e eşitse -->
-  
-
-
 <?php if ($_GET['sayfa']=="blog") { ?>
   <div class="content-wrapper">
-   
     <section class="content">
       <div class="container-fluid">
-        
         <div class="row">
-        <div class="col-md-12">  
-      <!-- general form elements -->
+        <div class="col-md-12">
             <div class="card card-primary">
              
               <div class="card-header">
                 <h3 class="card-title">BLOG</h3>
               </div>
-              <!-- /.card-header -->
-              <!-- form start -->
               <form action="islem.php" method="post" enctype="multipart/form-data">
                 <div class="card-body">
-                  
                  
                   <div class="form-group">
                     <label for="exampleInputEmail1">Blog Resim</label>
                     <input name="resim"type="file"  class="form-control">
                   </div>
-
 
                   <div class="form-group">
                     <label for="exampleInputEmail1">Blog Başlık</label>
@@ -46,26 +36,22 @@ require_once 'sidebar.php';
                     <label for="exampleInputEmail1">Blog Açıklama</label>
                     <textarea name="aciklama" id="editor1" class="ckeditor"></textarea>>
                   </div>
-                
-                 
 
                   </div>
                   
                 </div>
-                <!-- /.card-body -->
 
                 <div class="card-footer">
                   <button name="blogkaydet" style="float: right" type="submit" class="btn btn-primary">Kaydet</button>
                 </div>
               </form>
             </div>
-            <!-- /.card -->
+
           </div>
         </div>
         
-      </div><!-- /.container-fluid -->
+      </div>
     </section>
-    <!-- /.content -->
   </div>
 <?php } elseif ($_GET['sayfa']=="kategori") { ?>
   
@@ -76,14 +62,13 @@ require_once 'sidebar.php';
         
         <div class="row">
         <div class="col-md-12">  
-      <!-- general form elements -->
+
             <div class="card card-primary">
              
               <div class="card-header">
                 <h3 class="card-title">Kategori</h3>
               </div>
-              <!-- /.card-header -->
-              <!-- form start -->
+
               <form action="islem.php" method="post" enctype="multipart/form-data">
                 <div class="card-body">
                   
@@ -111,33 +96,18 @@ require_once 'sidebar.php';
                     
                   </select>
                 </div>
-
-                
-                
-                 
-
                   </div>
-                  
                 </div>
-                <!-- /.card-body -->
-
                 <div class="card-footer">
                   <button name="kategorikaydet" style="float: right" type="submit" class="btn btn-primary">Kaydet</button>
                 </div>
               </form>
             </div>
-            <!-- /.card -->
           </div>
         </div>
-        
-      </div><!-- /.container-fluid -->
+      </div>
     </section>
-    <!-- /.content -->
   </div>
 
 <?php } ?>
-
-
-
-
  <?php require_once 'footer.php'; ?>

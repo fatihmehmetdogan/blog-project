@@ -3,13 +3,7 @@ require_once 'header.php';
 require_once 'sidebar.php';
 require_once 'baglanti.php';
 
-
-
-
  ?>
-
-
-
 
 <div class="content-wrapper">
  
@@ -23,11 +17,6 @@ require_once 'baglanti.php';
               <div class="card-header">
                 <h3 class="card-title">KATEGORİ </h3>
               </div>
-              
-
-
-
-
               <form action="islem.php" method="post" enctype="multipart/form-data">
                 <div class="card-body">
                 
@@ -48,23 +37,8 @@ require_once 'baglanti.php';
                     <label for="exampleInputEmail1">KATEGORİ  Açıklama</label>
                     <textarea name="aciklama" id="editor1" class="ckeditor"></textarea>
                   </div>
-                   
-                 
-          
-    
 
-                  
-
-
-
-
-                   
                 </div>
-                
-
-
-
- 
                 <div class="card-footer">
                   <button name="kategorikaydet" style="float:right" type="submit" class="btn btn-primary">Kaydet</button>
                 </div>

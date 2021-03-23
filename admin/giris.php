@@ -4,9 +4,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Yazılım Yolcusu</title>
+  <title>BLOG</title>
 
-  <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
@@ -27,7 +26,6 @@
 
 <b style="color:red"><?php if(@$_GET['durum']=="hata"){ echo  "hatalı";} ?></b>  
 
-
       <form action="islem.php" method="post">
         <div class="input-group mb-3">
           <input name="email" type="email" class="form-control" placeholder="Email adresinizi giriniz">
@@ -47,27 +45,18 @@
         </div>
         <div class="row">
 
-          <!-- /.col -->
           <div class="col-4">
             <button name="girisyap" type="submit" class="btn btn-primary btn-block">Giriş Yap</button>
           </div>
-          <!-- /.col -->
         </div>
       </form>
 
 
     </div>
-    <!-- /.card-body -->
   </div>
-  <!-- /.card -->
 </div>
-<!-- /.login-box -->
-
-<!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
 <script src="dist/js/adminlte.min.js"></script>
 </body>
 </html>

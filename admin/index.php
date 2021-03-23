@@ -9,9 +9,7 @@ require_once 'sidebar.php';
       <div class="container-fluid">
         
         <div class="row">
-          
 
-          
         </div>
         
       </div><!-- /.container-fluid -->

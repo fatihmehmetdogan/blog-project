@@ -8,21 +8,16 @@ $kategorisor->execute(array(
 ));
 $kategoricek=$kategorisor->fetch(PDO::FETCH_ASSOC);
  ?>
-
 <div class="content-wrapper">
- 
     <section class="content">
       <div class="container-fluid">
      
         <div class="row">
       <div  class="col-md-12">
 <div class="card card-primary">
-
               <div class="card-header">
                 <h3 class="card-title">kategori</h3>
               </div>
-              <!-- /.card-header -->
-              <!-- form start -->
               <form action="islem.php" method="post" enctype="multipart/form-data">
                 <div class="card-body">
                          <div class="form-group">
@@ -36,11 +31,8 @@ $kategoricek=$kategorisor->fetch(PDO::FETCH_ASSOC);
                    <div class="form-group">
                     <label for="exampleInputEmail1">kategori başlık</label>
                     <input value="<?php echo $kategoricek['kategori_baslik'] ?>" name="baslik"  type="text" class="form-control"  placeholder="Lütfen başlık  giriniz.">
-                  </div> 
-
+                  </div>
           <input type="hidden" name="katid" value="<?php echo $kategoricek['kategori_id']?>">
-
-
                     <div class="form-group">
                     <label for="exampleInputEmail1">kategori sıra</label>
                     <input value="<?php echo $kategoricek['kategori_sira'] ?>" name="sira"  type="text" class="form-control"  placeholder="Lütfen sıra  giriniz.">
@@ -54,8 +46,6 @@ $kategoricek=$kategorisor->fetch(PDO::FETCH_ASSOC);
                    
                   <input type="hidden" name="id" value="<?php echo $kategoricek['kategori_id'] ?>">
 
-                    
-                   
                 </div>
                 <!-- /.card-body -->
  

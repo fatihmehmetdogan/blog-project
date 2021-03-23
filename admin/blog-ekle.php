@@ -2,49 +2,21 @@
 require_once 'header.php';
 require_once 'sidebar.php';
 require_once 'baglanti.php';
-
-
 $kategoriBaglanti=$baglanti->prepare("SELECT * FROM kategori");
 $kategoriBaglanti->execute(array());
-$kategoriler=$kategoriBaglanti->fetch(PDO::FETCH_ASSOC);
-
-
-foreach($kategoriler as $kategori) {
-  echo '<label><input type="checkbox" 
-    name="katid[]" value="'.$kategori['kategori_id'].'"/>'.$kategori['kategori_baslik'].'</label><br/>';
-}
-
-
+$kategoriler=$kategoriBaglanti->fetchAll();
  ?>
-
-
-
-
-
-
-
-
-
 <div class="content-wrapper">
- 
     <section class="content">
       <div class="container-fluid">
-     
         <div class="row">
       <div  class="col-md-12">
 <div class="card card-primary">
-
               <div class="card-header">
                 <h3 class="card-title">BLOG</h3>
               </div>
-              <!-- /.card-header -->
-              <!-- form start -->
               <form action="islem.php" method="post" enctype="multipart/form-data">
                 <div class="card-body">
-                
-
-
-
                   <div class="form-group">
                     <label for="exampleInputEmail1">BLOG Resim</label>
                     <input name="resim"  type="file" class="form-control"  >
@@ -62,33 +34,25 @@ foreach($kategoriler as $kategori) {
                     <label for="exampleInputEmail1">BLOG Açıklama</label>
                     <textarea name="aciklama" id="editor1" class="ckeditor"></textarea>
                   </div>
-                   
-                 
-          
-    
 
-                    
-                   
+                    <b>KATEGORİLER</b>
+                    <div class="form-group">
+
+                    <?php
+                        foreach($kategoriler as $kategori)
+                        echo '<label><input type="checkbox"  name="katid[]" value="'.$kategori['kategori_id'].'"/>'.$kategori['kategori_baslik'].'</label><br/>';
+                        ?>
+                    </div>
+
                 </div>
-                <!-- /.card-body -->
- 
                 <div class="card-footer">
                   <button name="blogkaydet" style="float:right" type="submit" class="btn btn-primary">Kaydet</button>
                 </div>
               </form> 
             </div>
-            <!-- /.card -->
  </div>
         </div>
-    
       </div>
     </section>
-    <!-- /.content -->
   </div>
-
-
-
-
-
-
  <?php require_once 'footer.php'; ?>

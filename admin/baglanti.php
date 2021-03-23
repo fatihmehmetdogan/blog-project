@@ -1,6 +1,4 @@
-<?php 
-
-
+<?php
 try {
 	$baglanti=new PDO('mysql:host=localhost; dbname=blogdb; 
 		charset=utf8;', 'root', '');
