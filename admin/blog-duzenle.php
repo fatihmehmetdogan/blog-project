@@ -30,7 +30,7 @@ $blogcek=$blogsor->fetch(PDO::FETCH_ASSOC);
                     <label for="exampleInputEmail1">BLOG başlık</label>
                     <input value="<?php echo $blogcek['blog_baslik'] ?>" name="baslik"  type="text" class="form-control"  placeholder="Lütfen başlık  giriniz.">
                   </div>
-          <input type="hidden" name="katid" value="<?php echo $blogcek['kategori_id']?>">
+          <input type="hidden" name="katid" value="<?php echo $blogcek['kategori_id']?>"
                     <div class="form-group">
                     <label for="exampleInputEmail1">BLOG sıra</label>
                     <input value="<?php echo $blogcek['blog_sira'] ?>" name="sira"  type="text" class="form-control"  placeholder="Lütfen sıra  giriniz.">

@@ -128,7 +128,7 @@ if (isset($_POST['blogkaydet'])) {
     $resimadi = $sayilar . $name;
     @move_uploaded_file($tmp_name, "$uploads_dir/$resimadi");
     $kaydet = $baglanti->prepare("INSERT into blog SET
-            blog_baslik:blog_baslik,
+            blog_baslik=:blog_baslik,
             blog_sira=:blog_sira,
             blog_aciklama=:blog_aciklama,
             blog_resim=:blog_resim
@@ -140,11 +140,16 @@ if (isset($_POST['blogkaydet'])) {
         'blog_resim' => $resimadi
     ));
     foreach ($katid as $kategoriId) {
+
         $kaydet2 = $baglanti->prepare("INSERT INTO blog_to_kategori SET blog_id=:blog_id, kategori_id=:kategori_id");
-        $insert2 = $kaydet2->execute(array(
-            'blog_id' => $insert['blog_id'],
+            $id = $baglanti->lastInsertId();
+            echo $id." id li kayıt eklendi";
+         $insert2 = $kaydet2->execute(array(
+            'blog_id' => $id['blog_id'],
             'kategori_id' => $kategoriId
+
         ));
+
     }
     if ($insert) {
         Header("Location:blog.php?katid=$katid&durum=okey");
@@ -177,7 +182,7 @@ blog_resim=:blog_resim
             'blog_resim' => $resimadi
         ));
         foreach ($katid as $kategoriId) {
-            $kaydet2 = $baglanti->prepare("İNSERT İNTO blog_to_kategori SET blog_id=:blog_id, kategori_id=:kategori_id");
+            $kaydet2 = $baglanti->prepare("INSERT INTO blog_to_kategori SET blog_id=:blog_id, kategori_id=:kategori_id");
             $insert2 = $kaydet2->execute(array(
                 'blog_id' => $_POST['id'],
                 'kategori_id' => $kategoriId

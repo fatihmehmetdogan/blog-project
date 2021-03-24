@@ -5,6 +5,7 @@ require_once 'baglanti.php';
 $kategoriBaglanti=$baglanti->prepare("SELECT * FROM kategori");
 $kategoriBaglanti->execute(array());
 $kategoriler=$kategoriBaglanti->fetchAll();
+
  ?>
 <div class="content-wrapper">
     <section class="content">
@@ -35,15 +36,15 @@ $kategoriler=$kategoriBaglanti->fetchAll();
                     <textarea name="aciklama" id="editor1" class="ckeditor"></textarea>
                   </div>
 
-                    <b>KATEGORİLER</b>
-                    <div class="form-group">
 
+                    <div class="form-group">
+                        <b>KATEGORİLER</b> <br>
                     <?php
                         foreach($kategoriler as $kategori)
                         echo '<label><input type="checkbox"  name="katid[]" value="'.$kategori['kategori_id'].'"/>'.$kategori['kategori_baslik'].'</label><br/>';
                         ?>
                     </div>
-
+                    <input name="katid" value="" type="hidden">
                 </div>
                 <div class="card-footer">
                   <button name="blogkaydet" style="float:right" type="submit" class="btn btn-primary">Kaydet</button>
