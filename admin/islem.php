@@ -280,13 +280,13 @@ if (isset($_POST['kategoriduzenle'])) {
         Header("Location:kategori.php?durum=no");
     }
 }
-if (isset($_GET['kategorisil'])) {
-    $katid = $_GET['katid'];
-    $eskiresim = $_GET['eskiresim'];
+if (isset($_POST['kategorisil'])) {
+    $katid = $_POST['katid'];
+    $eskiresim = $_POST['eskiresim'];
     unlink("resimler/kategori/$eskiresim");
     $sil = $baglanti->prepare("DELETE  FROM kategori where kategori_id=:kategori_id");
     $sil->execute(array(
-        'kategori_id' => $_GET['id']
+        'kategori_id' => $_POST['id']
     ));
     if ($sil) {
         Header("Location:kategori.php?katid=$katid&durum=okey");

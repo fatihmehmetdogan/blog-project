@@ -5,7 +5,6 @@ require_once 'baglanti.php';
 $kategoriBaglanti=$baglanti->prepare("SELECT * FROM kategori");
 $kategoriBaglanti->execute(array());
 $kategoriler=$kategoriBaglanti->fetchAll();
-
  ?>
 <div class="content-wrapper">
     <section class="content">

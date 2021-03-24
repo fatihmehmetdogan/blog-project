@@ -72,10 +72,7 @@ while ($yorumlarcek=$yorumlarsor->fetch(PDO::FETCH_ASSOC)) {
 
             
 
-            <div class="course-info d-flex justify-content-between align-items-center">
-              <h5>Eklenme Tarihi: </h5>
-              <p><?php echo $blogcek['blog_zaman'] ?></p>
-            </div>
+
 
             <div class="course-info d-flex justify-content-between align-items-center">
               <h5>Ekleyen: </h5>

@@ -6,6 +6,12 @@ $blogsor->execute(array(
 'blog_id'=>$_GET['id']
 ));
 $blogcek=$blogsor->fetch(PDO::FETCH_ASSOC);
+
+
+$kategoriBaglanti=$baglanti->prepare("SELECT * FROM kategori");
+$kategoriBaglanti->execute(array());
+$kategoriler=$kategoriBaglanti->fetchAll();
+
  ?>
 <div class="content-wrapper">
     <section class="content">
@@ -30,7 +36,7 @@ $blogcek=$blogsor->fetch(PDO::FETCH_ASSOC);
                     <label for="exampleInputEmail1">BLOG başlık</label>
                     <input value="<?php echo $blogcek['blog_baslik'] ?>" name="baslik"  type="text" class="form-control"  placeholder="Lütfen başlık  giriniz.">
                   </div>
-          <input type="hidden" name="katid" value="<?php echo $blogcek['kategori_id']?>"
+
                     <div class="form-group">
                     <label for="exampleInputEmail1">BLOG sıra</label>
                     <input value="<?php echo $blogcek['blog_sira'] ?>" name="sira"  type="text" class="form-control"  placeholder="Lütfen sıra  giriniz.">
@@ -40,6 +46,16 @@ $blogcek=$blogsor->fetch(PDO::FETCH_ASSOC);
                     <textarea name="aciklama" id="editor1" class="ckeditor">
                        <?php echo $blogcek['blog_aciklama'] ?> 
                     </textarea>
+
+                         <div class="form-group">
+                             <b>KATEGORİLER</b> <br>
+                             <?php
+                             foreach($kategoriler as $kategori)
+                                 echo '<label><input type="checkbox"  name="katid[]" value="'.$kategori['kategori_id'].'"/>'.$kategori['kategori_baslik'].'</label><br/>';
+                             ?>
+                         </div>
+
+
                   </div>
                   <input type="hidden" name="id" value="<?php echo $blogcek['blog_id'] ?>">
                 </div>

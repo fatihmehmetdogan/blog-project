@@ -5,22 +5,13 @@ FROM blog
 LEFT JOIN blog_to_kategori ON blog.blog_id = blog_to_kategori.blog_id
 ORDER BY blog.blog_id; ");
 $blogsor->execute(array(
-
-
-
 ));
 $blogcek=$blogsor->fetch(PDO::FETCH_ASSOC);
-
 ?>
 <br><br>
   <main id="main">
-
-  
-
-    <!-- ======= Cource Details Section ======= -->
     <section id="course-details" class="course-details">
       <div class="container" data-aos="fade-up">
-
         <div class="row">
           <div class="col-lg-8">
             <img src="admin/resimler/blog/<?php echo $blogcek['blog_resim'] ?>" class="img-fluid" alt="">
@@ -28,6 +19,8 @@ $blogcek=$blogsor->fetch(PDO::FETCH_ASSOC);
             <p>
            <?php echo $blogcek['blog_aciklama'] ?>
             </p>
+
+
             Yorumlar
 
                 <?php
@@ -73,12 +66,7 @@ while ($yorumlarcek=$yorumlarsor->fetch(PDO::FETCH_ASSOC)) {
           </div>
           <div class="col-lg-4">
 
-            
 
-            <div class="course-info d-flex justify-content-between align-items-center">
-              <h5>Eklenme Tarihi: </h5>
-              <p><?php echo $blogcek['blog_zaman'] ?></p>
-            </div>
 
             <div class="course-info d-flex justify-content-between align-items-center">
               <h5>Ekleyen: </h5>

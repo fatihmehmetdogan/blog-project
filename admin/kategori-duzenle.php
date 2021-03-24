@@ -40,7 +40,7 @@ $kategoricek=$kategorisor->fetch(PDO::FETCH_ASSOC);
                      <div class="form-group">
                     <label for="exampleInputEmail1">kategori Açıklama</label>
                     <textarea name="aciklama" id="editor1" class="ckeditor">
-                       <?php echo $kategoricek['kategori_aciklama'] ?> 
+                       <?php echo $kategoricek['kategori_aciklama'] ?>
                     </textarea>
                   </div> 
                    

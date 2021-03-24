@@ -5,23 +5,14 @@ FROM blog
 LEFT JOIN blog_to_kategori ON blog.blog_id = blog_to_kategori.blog_id
 ORDER BY blog.blog_id; ");
 $blogsor->execute(array(
+
 ));
-
-# kategori sayfasını içerik sayfası olarak kullanmasını yaptım
  ?>
-
 <br><br>
   <main id="main" data-aos="fade-in">
-
-   
-
-    <!-- ======= Courses Section ======= -->
     <section id="courses" class="courses">
       <div class="container" data-aos="fade-up">
-
         <div class="row" data-aos="zoom-in" data-aos-delay="100">
-
-
 <?php
 
 $kategorisor=$baglanti->prepare("SELECT * FROM kategori order by kategori_sira ASC");
@@ -36,13 +27,13 @@ while ($kategoricek=$kategorisor->fetch(PDO::FETCH_ASSOC)) {
 
 
               <li><a href="kategori-detay-<?=seo($kategoricek['kategori_baslik']).'-'.$kategoricek['kategori_id'] ?>"><?php echo $kategoricek['kategori_baslik'] ?></a></li>
-              
+
             </ul>
           </li>
-            
 
 
-            
+
+
               </div>
             </div>
           </div> <!-- End Course Item-->
