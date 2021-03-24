@@ -1,9 +1,6 @@
 <?php require_once 'header.php'; 
 
-$blogsor=$baglanti->prepare("SELECT *
-FROM blog
-LEFT JOIN blog_to_kategori ON blog.blog_id = blog_to_kategori.blog_id
-ORDER BY blog.blog_id; ");
+$blogsor=$baglanti->prepare("SELECT * FROM blog order by blog_sira ASC" );
 $blogsor->execute(array(
 ));
 $blogcek=$blogsor->fetch(PDO::FETCH_ASSOC);
@@ -20,25 +17,6 @@ $blogcek=$blogsor->fetch(PDO::FETCH_ASSOC);
            <?php echo $blogcek['blog_aciklama'] ?>
             </p>
 
-
-            Yorumlar
-
-                <?php
-
-$yorumlarsor=$baglanti->prepare("SELECT * FROM yorumlar  where yorum_kategori=:yorum_kategori and icerik_id=:icerik_id and yorum_onay=:yorum_onay ");
-$yorumlarsor->execute(array(
-'yorum_kategori'=>1,
-'icerik_id'=>$_GET['blog_id'],
-'yorum_onay'=>1
-
-));
-while ($yorumlarcek=$yorumlarsor->fetch(PDO::FETCH_ASSOC)) {
-                 ?>
-                <div class="course-info d-flex justify-content-between align-items-center">
-              <h5>Yazan kişi: <?php echo $yorumlarcek['yorum_adsoyad'] ?></h5>
-              <p><?php echo $yorumlarcek['yorum_detay'] ?></p>
-            </div>
-          <?php } ?>
 
 
 

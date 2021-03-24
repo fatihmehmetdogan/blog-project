@@ -12,4 +12,4 @@ RewriteRule ^blog-([0-9a-zA-Z-_]+)-([0-9]+)$  blog.php?sef=$1&blog_id=$2 [L,QSA]
 
 
 RewriteRule ^kategori-detay-([0-9a-zA-Z-_]+)-([0-9]+)$  kategori-detay.php?sef=$1&kategori_id=$2 [L,QSA]
-RewriteRule ^icerik-detay-([0-9a-zA-Z-_]+)-([0-9]+)$  icerik-detay.php?sef=$1&icerik_id=$2 [L,QSA]
+RewriteRule ^kategori-([0-9a-zA-Z-_]+)-([0-9]+)$  kategori.php?sef=$1&kategori_id=$2 [L,QSA]
