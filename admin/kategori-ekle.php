@@ -28,12 +28,7 @@ require_once 'baglanti.php';
                     <div class="form-group">
                     <label for="exampleInputEmail1">KATEGORİ  sıra</label>
                     <input name="sira"  type="text" class="form-control"  placeholder="Lütfen kategori sıra  giriniz.">
-                  </div> 
-                     <div class="form-group">
-                    <label for="exampleInputEmail1">KATEGORİ  Açıklama</label>
-                    <textarea name="aciklama" id="editor1" class="ckeditor"></textarea>
                   </div>
-                </div>
                 <div class="card-footer">
                   <button name="kategorikaydet" style="float:right" type="submit" class="btn btn-primary">Kaydet</button>
                 </div>
