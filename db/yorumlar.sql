@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: 127.0.0.1
--- Üretim Zamanı: 22 Mar 2021, 10:25:08
+-- Üretim Zamanı: 25 Mar 2021, 15:03:19
 -- Sunucu sürümü: 10.4.18-MariaDB
 -- PHP Sürümü: 8.0.3
 
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `yorumlar` (
   `yorum_id` int(11) NOT NULL,
   `yorum_kategori` varchar(240) COLLATE utf8_turkish_ci NOT NULL,
-  `icerik_id` int(11) NOT NULL,
+  `blog_id` int(11) NOT NULL,
   `yorum_adsoyad` varchar(280) COLLATE utf8_turkish_ci NOT NULL,
   `yorum_detay` text COLLATE utf8_turkish_ci NOT NULL,
   `yorum_zaman` timestamp NOT NULL DEFAULT current_timestamp(),
@@ -41,14 +41,22 @@ CREATE TABLE `yorumlar` (
 -- Tablo döküm verisi `yorumlar`
 --
 
-INSERT INTO `yorumlar` (`yorum_id`, `yorum_kategori`, `icerik_id`, `yorum_adsoyad`, `yorum_detay`, `yorum_zaman`, `yorum_onay`) VALUES
-(1, '1', 15, 'Fatih', 'SELAMLAR', '2021-03-19 16:01:57', 1),
+INSERT INTO `yorumlar` (`yorum_id`, `yorum_kategori`, `blog_id`, `yorum_adsoyad`, `yorum_detay`, `yorum_zaman`, `yorum_onay`) VALUES
 (2, '2', 6, 'Mehmet', 'İYİ GÜNLER', '2021-03-19 16:02:15', 1),
 (3, '1', 15, 'FM dogan', 'mühendislik ile ilgili güzel bir yazı', '2021-03-22 08:57:45', 1),
 (4, '1', 15, 'mehmet', 'asdsad', '2021-03-22 08:58:37', 1),
 (5, '1', 15, 'dogan', 'günaydınn', '2021-03-22 08:58:47', 1),
 (6, '1', 19, 'fmd', 'yapay zeka', '2021-03-22 09:23:58', 1),
-(7, '1', 19, 'gg', 'selamlar merhaba', '2021-03-22 09:24:08', 0);
+(8, '1', 139, 'mehmet', 'sadsa', '2021-03-24 15:44:21', 1),
+(9, '1', 138, 'mehmet', 'asdasdasd', '2021-03-25 12:18:20', 1),
+(10, '1', 168, 'fatih ', 'asdas', '2021-03-25 13:08:29', 1),
+(12, '1', 165, 'FM dogan', 'selammm', '2021-03-25 13:09:33', 1),
+(14, '1', 165, 'asdas', '213', '2021-03-25 13:11:03', 1),
+(18, '1', 164, 'dogan', 'kljkl', '2021-03-25 13:15:20', 1),
+(20, '1', 165, 'fmd', '123fmd', '2021-03-25 13:16:06', 1),
+(21, '1', 163, 'mehmet dogan', '999', '2021-03-25 13:16:46', 1),
+(22, '1', 169, 'wqe', 'ewq321', '2021-03-25 13:19:09', 1),
+(23, '1', 168, 'mehmet', 'merhabalar', '2021-03-25 13:31:04', 0);
 
 --
 -- Dökümü yapılmış tablolar için indeksler
@@ -68,7 +76,7 @@ ALTER TABLE `yorumlar`
 -- Tablo için AUTO_INCREMENT değeri `yorumlar`
 --
 ALTER TABLE `yorumlar`
-  MODIFY `yorum_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `yorum_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
