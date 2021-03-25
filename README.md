@@ -4,7 +4,7 @@
 
 PHP 8.0.3 ile yazılmış 
 
-Sublime text 3 editörü kullanılmıştır
+PhpStorm editörü kullanılmıştır
 
 Bu projenin çalışması için phpmyadmin ve apache server kurulu olması gerekmektedir
 
@@ -21,37 +21,31 @@ Ayrıca projeye girdiğinizde admin kullanıcı maili ve şifresi -> fatih@gmail
 
 ## Uygulama Arayüz Çıktılar:
 
-![slider](https://user-images.githubusercontent.com/46270592/111971706-ac827a80-8b0d-11eb-97c5-902916de4ca7.PNG)
+![blog](https://user-images.githubusercontent.com/46270592/112481291-e8287900-8d87-11eb-85aa-2905c1ee0554.PNG)
 
 
-![ayarlar](https://user-images.githubusercontent.com/46270592/111971777-c2903b00-8b0d-11eb-8078-e54626c56120.PNG)
+![blog-ekle](https://user-images.githubusercontent.com/46270592/112481363-fbd3df80-8d87-11eb-817c-25e9a8a1bdb5.PNG)
 
 
-![blogy](https://user-images.githubusercontent.com/46270592/111971904-e6538100-8b0d-11eb-8acf-9756d48c4a42.PNG)
+![blog-duzenle](https://user-images.githubusercontent.com/46270592/112481517-23c34300-8d88-11eb-8add-276fd862a548.PNG)
 
 
-![blogekle](https://user-images.githubusercontent.com/46270592/111971969-f4090680-8b0d-11eb-9846-f439e677cf1f.PNG)
+![kategoriler](https://user-images.githubusercontent.com/46270592/112481748-638a2a80-8d88-11eb-8160-fea8b718cb5c.PNG)
 
 
-![hakkımızda](https://user-images.githubusercontent.com/46270592/111971999-fc614180-8b0d-11eb-8b9e-9629cab11bf8.PNG)
+![kategori-ekle](https://user-images.githubusercontent.com/46270592/112481604-3b023080-8d88-11eb-86a4-ef6231b8e9a9.PNG)
 
 
-![kategoriler](https://user-images.githubusercontent.com/46270592/111972068-113dd500-8b0e-11eb-9550-edbdff17d0e2.PNG)
+![kategori-duzenle](https://user-images.githubusercontent.com/46270592/112481781-6d139280-8d88-11eb-9d79-16a83ceac0c1.PNG)
 
 
-![kategori-düzenle](https://user-images.githubusercontent.com/46270592/111972086-19961000-8b0e-11eb-87d8-844671e4a001.PNG)
+![yorum-onaylama](https://user-images.githubusercontent.com/46270592/112481821-769cfa80-8d88-11eb-80ea-0e0c835a479c.PNG)
 
 
-![kategorigoruntule](https://user-images.githubusercontent.com/46270592/111972135-2b77b300-8b0e-11eb-99fa-841c2a7771f8.PNG)
+![anasyafa](https://user-images.githubusercontent.com/46270592/112482785-76e9c580-8d89-11eb-880e-9102e1824b3c.PNG)
 
-![icerikekle](https://user-images.githubusercontent.com/46270592/111972157-34688480-8b0e-11eb-8a65-19bd2f98f977.PNG)
-
-![icerikduzenle](https://user-images.githubusercontent.com/46270592/111972187-3b8f9280-8b0e-11eb-84d5-0f207bd1e2ea.PNG)
+![blogdetayy](https://user-images.githubusercontent.com/46270592/112483247-e6f84b80-8d89-11eb-9774-1db13050271c.PNG)
 
 
-![yorumlar](https://user-images.githubusercontent.com/46270592/111972219-477b5480-8b0e-11eb-9087-94c256708b8a.PNG)
+![kategorilerr](https://user-images.githubusercontent.com/46270592/112482902-941e9400-8d89-11eb-892f-48498500b171.PNG)
 
-
-![girisss](https://user-images.githubusercontent.com/46270592/111972269-5530da00-8b0e-11eb-86d3-e71811121631.PNG)
-
-![anssyas](https://user-images.githubusercontent.com/46270592/111810534-2b499e80-88e7-11eb-902a-8b80c03dff7a.PNG)
