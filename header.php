@@ -67,17 +67,18 @@ $slidercek=$slidersor->fetch(PDO::FETCH_ASSOC);
             <li class="drop-down"><a href="">Kategoriler</a>
                 <ul>
                     <?php
-                    $kategorisor=$baglanti->prepare("SELECT * FROM kategori   order by kategori_sira ASC");
-                    $kategorisor->execute(array());
-                    while ($kategoricek=$kategorisor->fetch(PDO::FETCH_ASSOC)) {
-                        ?>
-                        <li><a href="kategori-detay-<?=seo($kategoricek['kategori_baslik']).'-'.$kategoricek['kategori_id'] ?>"><?php echo $kategoricek['kategori_baslik'] ?></a></li>
-                    <?php } ?>
+
+                    foreach ($baglanti->query("SELECT * FROM kategori")as $kat) {
+                        echo '<li>
+                        <a href="kategori-detay.php?katid='.$kat["kategori_id"].'">'.$kat["kategori_baslik"].'</a>
+            </li>';
+}
+                    ?>
                 </ul>
             </li>
             <li><a href="iletisim.php">İletişim</a></li>
         </ul>
-            
+
 
 
 

@@ -1,12 +1,25 @@
 <?php require_once 'header.php';
 
+$blogsor=$baglanti->prepare("SELECT *
+FROM blog
+LEFT JOIN blog_to_kategori ON blog.blog_id = blog_to_kategori.blog_id
+ORDER BY blog.blog_id; ");
+$blogsor->execute(array(
+));
 
  ?>
+
 <br><br>
   <main id="main" data-aos="fade-in">
+
+
+
+    <!-- ======= Courses Section ======= -->
     <section id="courses" class="courses">
       <div class="container" data-aos="fade-up">
+
         <div class="row" data-aos="zoom-in" data-aos-delay="100">
+
 
 <?php
 

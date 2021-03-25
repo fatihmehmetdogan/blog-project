@@ -1,4 +1,6 @@
-<?php require_once 'header.php'; ?>
+<?php require_once 'header.php';
+
+?>
 
   <!-- ======= Hero Section ======= -->
   <section style="background-image: url(admin/resimler/slider/<?php echo $slidercek['slider_resim'] ?>);" 
