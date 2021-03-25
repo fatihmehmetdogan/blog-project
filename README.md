@@ -44,6 +44,8 @@ Ayrıca projeye girdiğinizde admin kullanıcı maili ve şifresi -> fatih@gmail
 
 ![anasyafa](https://user-images.githubusercontent.com/46270592/112482785-76e9c580-8d89-11eb-880e-9102e1824b3c.PNG)
 
+![blogdetayy](https://user-images.githubusercontent.com/46270592/112483247-e6f84b80-8d89-11eb-9774-1db13050271c.PNG)
+
 
 ![kategorilerr](https://user-images.githubusercontent.com/46270592/112482902-941e9400-8d89-11eb-892f-48498500b171.PNG)
 
