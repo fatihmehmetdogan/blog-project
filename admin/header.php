@@ -1,28 +1,21 @@
 <?php 
 session_start();
 require_once 'baglanti.php';
-
-
 $kullanicisor=$baglanti->prepare("SELECT * FROM kullanici  where kullanici_email=:kullanici_email");
 $kullanicisor->execute(array(
 'kullanici_email'=>$_SESSION['giris']             #benim session ile girdiğim email varsa otomatik var sayacak
 ));
 $var=$kullanicisor->rowCount();
-
 if ($var=="0") {
   Header("Location:giris.php?durum=girisyap");
 }
-
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Blogweb admin paneli</title>
-
-  <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
@@ -45,8 +38,6 @@ if ($var=="0") {
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
-
-  <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
@@ -56,11 +47,6 @@ if ($var=="0") {
       <li class="nav-item d-none d-sm-inline-block">
         <a href="index.php" class="nav-link">Anasayfa</a>
       </li>
-     
     </ul>
-
-    
 <?php echo $_SESSION['giris'];  ?>
-
   </nav>
-  <!-- /.navbar -->

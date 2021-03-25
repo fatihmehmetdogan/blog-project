@@ -4,16 +4,10 @@ require_once 'sidebar.php';
 $slidersor=$baglanti->prepare("SELECT * FROM slider where slider_id=?");
 $slidersor->execute(array(1));
 $slidercek=$slidersor->fetch(PDO::FETCH_ASSOC);
-
-
-
  ?>
- 
   <div class="content-wrapper">
- 
     <section class="content">
       <div class="container-fluid">
-     
         <div class="row">
       <div  class="col-md-12">
 <div class="card card-primary">
@@ -22,7 +16,6 @@ if (@$_GET['durum']=="okey") { ?>
   <p style="color:green ; ">İşlem başarılı</p>
 <?php } elseif (@$_GET['durum']=="no") { ?>
   <p style="color:red ; ">İşlem başarısız</p>
-
 <?php }  ?>
               <div class="card-header">
                 <h3 class="card-title">Slider</h3>
@@ -43,15 +36,12 @@ if (@$_GET['durum']=="okey") { ?>
                    <div class="form-group">
                     <label for="exampleInputEmail1">Slider Başlık</label>
                     <input name="baslik" value="<?php echo  $slidercek['slider_baslik'] ?>" type="text" class="form-control"  placeholder="Lütfen sitenizin başlığını giriniz.">
-                
                      <div class="form-group">
                     <label for="exampleInputEmail1">Slider  Açıklama</label>
                     <textarea name="aciklama" id="editor1" class="ckeditor"><?php echo $slidercek['slider_aciklama'] ?></textarea>
                   </div>
-                   
                 </div>
                 <!-- /.card-body -->
-
                 <div class="card-footer">
                   <button name="sliderkaydet" style="float:right" type="submit" class="btn btn-primary">Kaydet</button>
                 </div>

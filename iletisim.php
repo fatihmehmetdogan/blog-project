@@ -1,11 +1,8 @@
 <?php require_once 'header.php'; ?>
 <br><br><br>
   <main id="main">
-
-
     <!-- ======= Contact Section ======= -->
     <section id="contact" class="contact">
-  
 
       <div class="container" data-aos="fade-up">
 

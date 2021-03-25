@@ -1,21 +1,20 @@
-<?php require_once 'header.php';
+<?php
 
-
+require_once 'header.php';
+$katid = $_GET["katid"];
+$query = $baglanti->prepare("SELECT * FROM blog
+LEFT JOIN blog_to_kategori ON blog.blog_id = blog_to_kategori.blog_id WHERE blog_to_kategori.kategori_id=:katid
+ORDER BY blog.blog_id
+  ");
+$query->execute(array(
+        "katid"=>$katid
+));
+$goster = $query->fetchAll(PDO::FETCH_ASSOC);
 ?>
     <br><br>
     <main id="main">
         <section id="course-details" class="course-details">
             <div class="container" data-aos="fade-up">
-
-                <?php
-                $get = $_GET["katid"];
-                $query = $baglanti->prepare("SELECT * FROM blog
-LEFT JOIN blog_to_kategori ON blog.blog_id = blog_to_kategori.blog_id WHERE blog_to_kategori.kategori_id=?
-ORDER BY blog.blog_id
-  ");
-                $query->execute(array($get));
-                $goster = $query->fetchAll(PDO::FETCH_ASSOC);
-                ?>
                 <?php
                 foreach ($goster as $row) {
                     ?>
@@ -28,7 +27,11 @@ ORDER BY blog.blog_id
                         </h3>
                         </p>
                     </div>
-                    <?php echo $row["blog_aciklama"] ?>
+                    <p><?php
+                        $aciklama = $row['blog_aciklama'];   # yazının bi bölümünü alıyor
+                        $bolaciklama = substr($aciklama, 0, 50);
+                        echo $bolaciklama;
+                        ?></p>
                     <?php
                 }
                 ?>

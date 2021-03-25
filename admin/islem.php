@@ -139,26 +139,25 @@ if (isset($_POST['blogkaydet'])) {
         'blog_aciklama' => $_POST['aciklama'],
         'blog_resim' => $resimadi
     ));
+    $id = $baglanti->lastInsertId();
     foreach ($katid as $kategoriId) {
-
         $kaydet2 = $baglanti->prepare("INSERT INTO blog_to_kategori SET blog_id=:blog_id, kategori_id=:kategori_id");
-            $id = $baglanti->lastInsertId();
-            echo $id." id li kayıt eklendi";
-         $insert2 = $kaydet2->execute(array(
-            'blog_id' => $id['blog_id'],
+        $insert2 = $kaydet2->execute(array(
+            'blog_id' => $id,
             'kategori_id' => $kategoriId
-
         ));
-
     }
+
     if ($insert) {
-        Header("Location:blog.php?katid=$katid&durum=okey");
+        Header("Location:blog.php?durum=okey");
     } else {
-        Header("Location:blog.php?katid=$katid&durum=no");
+        Header("Location:blog.php?durum=no");
     }
 }
+
 if (isset($_POST['blogduzenle'])) {
     $katid = $_POST['katid'];
+    $resimadi = null;
     if ($_FILES['resim'] ["size"] > 0) {
         $uploads_dir = 'resimler/blog';
         @$tmp_name = $_FILES['resim'] ["tmp_name"];
@@ -174,28 +173,15 @@ blog_baslik=:blog_baslik,
 blog_sira=:blog_sira,
 blog_aciklama=:blog_aciklama,
 blog_resim=:blog_resim
+WHERE blog_id={$_POST['id']}
 	");
-        $insert = $kaydet->execute(array(
+        $update = $kaydet->execute(array(
             'blog_baslik' => htmlspecialchars($_POST['baslik']),
             'blog_sira' => htmlspecialchars($_POST['sira']),
             'blog_aciklama' => $_POST['aciklama'],
             'blog_resim' => $resimadi
         ));
-        foreach ($katid as $kategoriId) {
-            $kaydet2 = $baglanti->prepare("INSERT INTO blog_to_kategori SET blog_id=:blog_id, kategori_id=:kategori_id");
-            $insert2 = $kaydet2->execute(array(
-                'blog_id' => $_POST['id'],
-                'kategori_id' => $kategoriId
-            ));
-        }
-        if ($update) {
-            $eskiresim = $_POST['eskiresim'];
-            unlink("resimler/blog/$eskiresim");
-            Header("Location:blog.php?katid=$katid&durum=okey");
-        } else {
-            Header("Location:blog.php?katid=$katid&durum=no");
-        }
-    } else {
+    }else{
         $kaydet = $baglanti->prepare("UPDATE blog SET
 blog_baslik=:blog_baslik,
 blog_sira=:blog_sira,
@@ -207,11 +193,31 @@ WHERE blog_id={$_POST['id']}
             'blog_sira' => htmlspecialchars($_POST['sira']),
             'blog_aciklama' => $_POST['aciklama']
         ));
-        if ($update) {
-            Header("Location:blog.php?katid=$katid&durum=okey");
-        } else {
-            Header("Location:blog.php?katid=$katid&durum=no");
+    }
+    foreach ($katid as $kategoriId) {
+        $kontrol = $baglanti->prepare("SELECT id FROM blog_to_kategori WHERE blog_id=:blog_id AND kategori_id=:kategori_id");
+        $kontrol->execute(array(
+            'blog_id' => $_POST['id'],
+            'kategori_id' => $kategoriId
+        ));
+        $varolan = $kontrol->fetchAll(PDO::FETCH_COLUMN, 0);
+        if (count($varolan) > 0) {
+            continue;
         }
+        $kaydet2 = $baglanti->prepare("INSERT INTO blog_to_kategori SET blog_id=:blog_id, kategori_id=:kategori_id");
+        $insert2 = $kaydet2->execute(array(
+            'blog_id' => $_POST['id'],
+            'kategori_id' => $kategoriId
+        ));
+    }
+    if ($update) {
+        $eskiresim = $_POST['eskiresim'];
+        if ($eskiresim && $resimadi) {
+            unlink("resimler/blog/$eskiresim");
+        }
+        Header("Location:blog.php?durum=okey");
+    } else {
+        Header("Location:blog.php?durum=no");
     }
 }
 if (isset($_POST['blogsil'])) {

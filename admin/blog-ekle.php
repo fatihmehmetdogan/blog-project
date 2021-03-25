@@ -34,8 +34,6 @@ $kategoriler=$kategoriBaglanti->fetchAll();
                     <label for="exampleInputEmail1">BLOG Açıklama</label>
                     <textarea name="aciklama" id="editor1" class="ckeditor"></textarea>
                   </div>
-
-
                     <div class="form-group">
                         <b>KATEGORİLER</b> <br>
                     <?php
@@ -43,7 +41,6 @@ $kategoriler=$kategoriBaglanti->fetchAll();
                         echo '<label><input type="checkbox"  name="katid[]" value="'.$kategori['kategori_id'].'"/>'.$kategori['kategori_baslik'].'</label><br/>';
                         ?>
                     </div>
-                    <input name="katid" value="" type="hidden">
                 </div>
                 <div class="card-footer">
                   <button name="blogkaydet" style="float:right" type="submit" class="btn btn-primary">Kaydet</button>

@@ -4,11 +4,7 @@ $kategorisor=$baglanti->prepare("SELECT * FROM kategori order by kategori_sira "
 $kategorisor->execute(array(
 ));
 
- 
  ?>
-
-
-
   <div class="content-wrapper">
  
     <section class="content">

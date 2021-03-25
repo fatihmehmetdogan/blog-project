@@ -13,7 +13,6 @@
               <strong>Email:<?php echo $ayarcek['ayar_email']?><br>
             </p>
           </div>
-
           <div class="col-lg-2 col-md-6 footer-links">
             <h4 style="color: white">Sayfalarımız</h4>
             <ul>
@@ -21,19 +20,13 @@
               <li><i class="bx bx-chevron-right"></i> <a style="color: white" href="hakkimizda">Hakkımızda</a></li>
               <li><i class="bx bx-chevron-right"></i> <a style="color: white" href="blog">Blog</a></li>
               <li><i class="bx bx-chevron-right"></i> <a style="color: white" href="iletisim">İletişim</a></li>
-             
             </ul>
           </div>
-
-
-        
-
         </div>
       </div>
     </div>
 
     <div class="container d-md-flex py-4">
-
       <div class="mr-md-auto text-center text-md-left">
         <div style="color: white" class="copyright">
           &copy; Tüm Hakları Saklıdır <strong><span>Blog Sitesi </span>
@@ -59,7 +52,6 @@
   <script src="assets/vendor/counterup/counterup.min.js"></script>
   <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
-
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
 

@@ -10,7 +10,6 @@
       <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">Blog</span>
     </a>
-
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
@@ -22,8 +21,6 @@
           <a href="#" class="d-block">Fatih</a>
         </div>
       </div>
-
-
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -32,11 +29,9 @@
               <i class="fas fa-indent"></i>
               <p class="beyazyazi">
                 Anasayfa
-                
               </p>
             </a>
           </li>
-
              <li class="nav-item">
             <a href="slider.php" class="nav-link">
              <i class="fas fa-images"></i>
@@ -44,7 +39,6 @@
                 Slider  
               </p>
             </a>
-
           <li class="nav-item menu-open">
             <a href="#" class="nav-link active ">
               <i class="fas fa-users-cog"></i>
@@ -60,7 +54,6 @@
                   <p class="beyazyazi">Genel Ayarlar</p>
                 </a>
               </li>
-            
             <li class="nav-item">
             <a href="blog.php" class="nav-link">
               <i class="fas fa-users"></i>
@@ -69,9 +62,6 @@
               </p>
             </a>
           </li>
-
-         
-          
              <li class="nav-item">
             <a href="kategori.php" class="nav-link">
               <i class="fas fa-ellipsis-v"></i>
@@ -80,17 +70,14 @@
               </p>
             </a>
           </li>
-
              <li class="nav-item">
             <a href="yorumlar.php" class="nav-link">
               <i class="fas fa-comments"></i>
               <p class="beyazyazi">
                 Yorumlar
-               
               </p>
             </a>
           </li>
-      
              <li class="nav-item">
             <a href="cikis.php" class="nav-link">
               <i class="fas fa-sign-out-alt"></i>
@@ -99,11 +86,7 @@
               </p>
             </a>
           </li>
-
-
             </ul>
-          
-
           </li>
         </ul>
       </nav>

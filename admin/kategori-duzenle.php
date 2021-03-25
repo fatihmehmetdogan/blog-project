@@ -37,18 +37,10 @@ $kategoricek=$kategorisor->fetch(PDO::FETCH_ASSOC);
                     <label for="exampleInputEmail1">kategori sıra</label>
                     <input value="<?php echo $kategoricek['kategori_sira'] ?>" name="sira"  type="text" class="form-control"  placeholder="Lütfen sıra  giriniz.">
                   </div> 
-                     <div class="form-group">
-                    <label for="exampleInputEmail1">kategori Açıklama</label>
-                    <textarea name="aciklama" id="editor1" class="ckeditor">
-                       <?php echo $kategoricek['kategori_aciklama'] ?>
-                    </textarea>
-                  </div> 
-                   
-                  <input type="hidden" name="id" value="<?php echo $kategoricek['kategori_id'] ?>">
 
+                  <input type="hidden" name="id" value="<?php echo $kategoricek['kategori_id'] ?>">
                 </div>
                 <!-- /.card-body -->
- 
                 <div class="card-footer">
                   <button name="kategoriduzenle" style="float:right" type="submit" class="btn btn-primary">Kaydet</button>
                 </div>
@@ -62,10 +54,4 @@ $kategoricek=$kategorisor->fetch(PDO::FETCH_ASSOC);
     </section>
     <!-- /.content -->
   </div>
-
-
-
-
-
-
  <?php require_once 'footer.php'; ?>

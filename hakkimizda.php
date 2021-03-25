@@ -1,9 +1,7 @@
 <?php require_once 'header.php' ?>
 
 <br><br><br>
-  <main id="main"> 
- 
-  
+  <main id="main">
     <section id="about" class="about">
       <div class="container" data-aos="fade-up">
 
@@ -16,15 +14,9 @@
             <p class="font-italic">
               <?php echo $hakkimizdacek['hakkimizda_aciklama'] ?>
             </p>
-        
-       
-
           </div>
         </div>
-
       </div>
     </section><!-- End About Section -->
-
- 
   </main><!-- End #main -->
 <?php require_once 'footer.php'; ?>

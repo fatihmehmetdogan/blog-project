@@ -1,11 +1,8 @@
 <?php require_once 'header.php'; 
 require_once 'sidebar.php';
 ?>
-
   <div class="content-wrapper">
-
     <section class="content">
-
       <div class="card">
         <div class="card-header">
           <h3 class="card-title">kategoriler</h3><br>
@@ -13,7 +10,6 @@ require_once 'sidebar.php';
   <p style="color:green ; ">İşlem başarılı</p>
 <?php } elseif (@$_GET['durum']=="no") { ?>
   <p style="color:red ; ">İşlem başarısız</p>
-
 <?php }  ?>
           <div class="card-tools">
              <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -28,7 +24,6 @@ require_once 'sidebar.php';
 
           <table class="table table-striped projects">
               <thead>
-
                   <tr>
                       <th >
                          Ad soyad
@@ -36,15 +31,11 @@ require_once 'sidebar.php';
                       <th >
                          Detay
                        </th>
-                     
                     <th></th>
-                         
                   </tr>
               </thead>
               <tbody>
-
                 <?php
-
 $yorumlarsor=$baglanti->prepare("SELECT * FROM yorumlar  where yorum_onay=:yorum_onay");
 $yorumlarsor->execute(array(
 'yorum_onay'=>0
@@ -64,9 +55,6 @@ while ($yorumlarcek=$yorumlarsor->fetch(PDO::FETCH_ASSOC)) {
                         <?php echo $yorumlarcek['yorum_zaman'] ?>
                           </small>
                       </td>
-                      
-                      
-               
                       <td class="project-actions text-right">
                            <a class="btn btn-success btn-sm" href="islem.php?yorumonayla&id=<?php echo $yorumlarcek['yorum_id'] ?>">
                               <i class="fas fa-plus">
@@ -80,10 +68,7 @@ while ($yorumlarcek=$yorumlarsor->fetch(PDO::FETCH_ASSOC)) {
                           </a>
                       </td>
                   </tr>
-                  
                 <?php } ?>
-                  
-              
               </tbody>
           </table>
         </div>

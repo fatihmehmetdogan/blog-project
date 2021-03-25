@@ -39,7 +39,6 @@ if (@$_GET['durum']=="okey") { ?>
                     <label for="exampleInputEmail1">Hakkımızda Açıklama</label>
                     <textarea name="aciklama" id="editor1" class="ckeditor"><?php echo $hakkimizdacek['hakkimizda_aciklama'] ?></textarea>
                   </div>
-                   
                 </div>
                 <div class="card-footer">
                   <button name="hakkimizdakaydet" style="float:right" type="submit" class="btn btn-primary">Kaydet</button>
@@ -48,7 +47,6 @@ if (@$_GET['durum']=="okey") { ?>
             </div>
  </div>
         </div>
-    
       </div>
     </section>
   </div>

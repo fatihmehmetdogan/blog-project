@@ -4,16 +4,12 @@ require_once 'sidebar.php';
 require_once 'baglanti.php';
 
  ?>
-
 <div class="content-wrapper">
- 
     <section class="content">
       <div class="container-fluid">
-     
         <div class="row">
       <div  class="col-md-12">
 <div class="card card-primary">
-
               <div class="card-header">
                 <h3 class="card-title">KATEGORİ </h3>
               </div>
@@ -37,7 +33,6 @@ require_once 'baglanti.php';
                     <label for="exampleInputEmail1">KATEGORİ  Açıklama</label>
                     <textarea name="aciklama" id="editor1" class="ckeditor"></textarea>
                   </div>
-
                 </div>
                 <div class="card-footer">
                   <button name="kategorikaydet" style="float:right" type="submit" class="btn btn-primary">Kaydet</button>

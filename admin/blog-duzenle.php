@@ -1,72 +1,82 @@
 <?php
 require_once 'header.php';
 require_once 'sidebar.php';
-$blogsor=$baglanti->prepare("SELECT * FROM blog where blog_id=:blog_id");
+$blogsor = $baglanti->prepare("SELECT * FROM blog where blog_id=:blog_id");
 $blogsor->execute(array(
-'blog_id'=>$_GET['id']
+    'blog_id' => $_GET['id']
 ));
-$blogcek=$blogsor->fetch(PDO::FETCH_ASSOC);
+$blogcek = $blogsor->fetch(PDO::FETCH_ASSOC);
 
-
-$kategoriBaglanti=$baglanti->prepare("SELECT * FROM kategori");
+$blogkategoriler = $baglanti->prepare("SELECT kategori_id FROM blog_to_kategori WHERE blog_id=:blog_id ");
+$blogkategoriler->execute(array(
+    'blog_id' => $_GET['id']
+));
+$blogkategorilerarray = $blogkategoriler->fetchAll(PDO::FETCH_COLUMN, 0);;
+$kategoriBaglanti = $baglanti->prepare("SELECT * FROM kategori");
 $kategoriBaglanti->execute(array());
-$kategoriler=$kategoriBaglanti->fetchAll();
+$kategoriler = $kategoriBaglanti->fetchAll();
+?>
+    <div class="content-wrapper">
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card card-primary">
+                            <div class="card-header">
+                                <h3 class="card-title">blog</h3>
+                            </div>
+                            <form action="islem.php" method="post" enctype="multipart/form-data">
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">BLOG Resim</label>
+                                        <img style="width:150px"
+                                             src="resimler/blog/<?php echo $blogcek['blog_resim'] ?>">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">BLOG Resim</label>
+                                        <input name="resim" type="file" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">BLOG başlık</label>
+                                        <input value="<?php echo $blogcek['blog_baslik'] ?>" name="baslik" type="text"
+                                               class="form-control" placeholder="Lütfen başlık  giriniz.">
+                                    </div>
 
- ?>
-<div class="content-wrapper">
-    <section class="content">
-      <div class="container-fluid">
-        <div class="row">
-      <div  class="col-md-12">
-<div class="card card-primary">
-              <div class="card-header">
-                <h3 class="card-title">blog</h3>
-              </div>
-              <form action="islem.php" method="post" enctype="multipart/form-data">
-                <div class="card-body">
-                         <div class="form-group">
-                    <label for="exampleInputEmail1">BLOG Resim</label>
-                    <img style="width:150px" src="resimler/blog/<?php echo $blogcek['blog_resim'] ?>">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">BLOG Resim</label>
-                    <input name="resim"  type="file" class="form-control">
-                  </div>
-                   <div class="form-group">
-                    <label for="exampleInputEmail1">BLOG başlık</label>
-                    <input value="<?php echo $blogcek['blog_baslik'] ?>" name="baslik"  type="text" class="form-control"  placeholder="Lütfen başlık  giriniz.">
-                  </div>
-
-                    <div class="form-group">
-                    <label for="exampleInputEmail1">BLOG sıra</label>
-                    <input value="<?php echo $blogcek['blog_sira'] ?>" name="sira"  type="text" class="form-control"  placeholder="Lütfen sıra  giriniz.">
-                  </div> 
-                     <div class="form-group">
-                    <label for="exampleInputEmail1">BLOG Açıklama</label>
-                    <textarea name="aciklama" id="editor1" class="ckeditor">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">BLOG sıra</label>
+                                        <input value="<?php echo $blogcek['blog_sira'] ?>" name="sira" type="text"
+                                               class="form-control" placeholder="Lütfen sıra  giriniz.">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">BLOG Açıklama</label>
+                                        <textarea name="aciklama" id="editor1" class="ckeditor">
                        <?php echo $blogcek['blog_aciklama'] ?> 
                     </textarea>
-
-                         <div class="form-group">
-                             <b>KATEGORİLER</b> <br>
-                             <?php
-                             foreach($kategoriler as $kategori)
-                                 echo '<label><input type="checkbox"  name="katid[]" value="'.$kategori['kategori_id'].'"/>'.$kategori['kategori_baslik'].'</label><br/>';
-                             ?>
-                         </div>
-
-
-                  </div>
-                  <input type="hidden" name="id" value="<?php echo $blogcek['blog_id'] ?>">
+                                        <div class="form-group">
+                                            <b>KATEGORİLER</b> <br>
+                                            <?php
+                                            foreach ($kategoriler as $kategori) {
+                                                if (in_array($kategori['kategori_id'], $blogkategorilerarray)) {
+                                                    echo '<label><input type="checkbox" checked  name="katid[]" value="' . $kategori['kategori_id'] . '"/>' . $kategori['kategori_baslik'] . '</label><br/>';
+                                                } else {
+                                                    echo '<label><input type="checkbox"  name="katid[]" value="' . $kategori['kategori_id'] . '"/>' . $kategori['kategori_baslik'] . '</label><br/>';
+                                                }
+                                            }
+                                            ?>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" name="id" value="<?php echo $blogcek['blog_id'] ?>">
+                                </div>
+                                <div class="card-footer">
+                                    <button name="blogduzenle" style="float:right" type="submit"
+                                            class="btn btn-primary">Kaydet
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-                <div class="card-footer">
-                  <button name="blogduzenle" style="float:right" type="submit" class="btn btn-primary">Kaydet</button>
-                </div>
-              </form> 
             </div>
- </div>
-        </div>
-      </div>
-    </section>
-  </div>
- <?php require_once 'footer.php'; ?>
+        </section>
+    </div>
+<?php require_once 'footer.php'; ?>

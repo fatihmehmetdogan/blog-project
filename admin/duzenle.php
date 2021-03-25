@@ -9,8 +9,6 @@ $blogsor->execute(array(
 'blog_id'=>$_GET['id']
 ));
 $blogcek=$blogsor->fetch(PDO::FETCH_ASSOC);
-
-
  ?>
 <div class="content-wrapper">
     <section class="content">
@@ -60,16 +58,13 @@ $blogcek=$blogsor->fetch(PDO::FETCH_ASSOC);
       </div>
     </section>
   </div>
-
 <?php } elseif ($_GET['sayfa']=="kategori") {
 $kategorisor=$baglanti->prepare("SELECT * FROM kategori where kategori_id=:kategori_id");
 $kategorisor->execute(array(
 'kategori_id'=>$_GET['id']
 ));
 $kategoricek=$kategorisor->fetch(PDO::FETCH_ASSOC);
-
 ?>
-
 <div class="content-wrapper">
     <section class="content">
       <div class="container-fluid">
@@ -112,10 +107,8 @@ $kategoricek=$kategorisor->fetch(PDO::FETCH_ASSOC);
                     <option value="2" <?php if ($kategoricek['kategori_durum']=="2") {
                       echo "selected";
                     } ?>  >Pasif</option>
-                    
                   </select>
                 </div>
-
                 </div>
         <input type="hidden" name="id" value="<?php echo $kategoricek['kategori_id'] ?>">
                 <div class="card-footer">
@@ -125,11 +118,8 @@ $kategoricek=$kategorisor->fetch(PDO::FETCH_ASSOC);
             </div>
           </div>
         </div>
-        
       </div>
     </section>
   </div>
-
 <?php } ?>
-
  <?php require_once 'footer.php'; ?>

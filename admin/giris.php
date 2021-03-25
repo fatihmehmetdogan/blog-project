@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,9 +22,7 @@
     </div>
     <div class="card-body">
       <p class="login-box-msg">Lütfen giriş bilgilerinizi giriniz</p>
-
-<b style="color:red"><?php if(@$_GET['durum']=="hata"){ echo  "hatalı";} ?></b>  
-
+<b style="color:red"><?php if(@$_GET['durum']=="hata"){ echo  "hatalı";} ?></b>
       <form action="islem.php" method="post">
         <div class="input-group mb-3">
           <input name="email" type="email" class="form-control" placeholder="Email adresinizi giriniz">
@@ -50,8 +47,6 @@
           </div>
         </div>
       </form>
-
-
     </div>
   </div>
 </div>
