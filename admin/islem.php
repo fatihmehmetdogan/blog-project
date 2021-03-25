@@ -181,7 +181,7 @@ WHERE blog_id={$_POST['id']}
             'blog_aciklama' => $_POST['aciklama'],
             'blog_resim' => $resimadi
         ));
-    }else{
+    } else {
         $kaydet = $baglanti->prepare("UPDATE blog SET
 blog_baslik=:blog_baslik,
 blog_sira=:blog_sira,
@@ -304,13 +304,13 @@ if (isset($_POST['blogyorumkaydet'])) {
     $link = $_SERVER['HTTP_REFERER'];             # link i alıyor hangi sayfada olduğunu yorumun
     $kaydet = $baglanti->prepare("INSERT into yorumlar SET 
 yorum_kategori=:yorum_kategori,
-icerik_id=:icerik_id,
+blog_id=:blog_id,
 yorum_adsoyad=:yorum_adsoyad,
 yorum_detay=:yorum_detay
 	");
     $insert = $kaydet->execute(array(
         'yorum_kategori' => htmlspecialchars($_POST['kategori']),
-        'icerik_id' => htmlspecialchars($_POST['id']),
+        'blog_id' => htmlspecialchars($_POST['id']),
         'yorum_adsoyad' => htmlspecialchars($_POST['adsoyad']),
         'yorum_detay' => htmlspecialchars($_POST['detay'])
     ));
@@ -342,26 +342,6 @@ if (isset($_GET['yorumsil'])) {
         Header("Location:yorumlar.php?durum=okey");
     } else {
         Header("Location:yorumlar.php?durum=no");
-    }
-}
-if (isset($_POST['icerikyorumkaydet'])) {
-    $link = $_SERVER['HTTP_REFERER'];
-    $kaydet = $baglanti->prepare("INSERT into yorumlar SET 
-yorum_kategori=:yorum_kategori,
-icerik_id=:icerik_id,
-yorum_adsoyad=:yorum_adsoyad,
-yorum_detay=:yorum_detay
-	");
-    $insert = $kaydet->execute(array(
-        'yorum_kategori' => htmlspecialchars($_POST['kategori']),
-        'icerik_id' => htmlspecialchars($_POST['id']),
-        'yorum_adsoyad' => htmlspecialchars($_POST['adsoyad']),
-        'yorum_detay' => htmlspecialchars($_POST['detay'])
-    ));
-    if ($insert) {
-        Header("Location:$link?durum=okey");
-    } else {
-        Header("Location:$link?durum=no");
     }
 }
 if (isset($_POST['girisyap'])) {
