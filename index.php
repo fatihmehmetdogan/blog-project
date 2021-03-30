@@ -1,6 +1,7 @@
 <?php require_once 'header.php';
 
 ?>
+
     <!-- ======= Hero Section ======= -->
     <section style="background-image: url(admin/resimler/slider/<?php echo $slidercek['slider_resim'] ?>);"
              id="hero" class="d-flex justify-content-center align-items-center">

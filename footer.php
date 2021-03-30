@@ -18,7 +18,7 @@
             <ul>
               <li><i class="bx bx-chevron-right"></i> <a style="color: white" href="index">Anasayfa</a></li>
               <li><i class="bx bx-chevron-right"></i> <a style="color: white" href="hakkimizda">Hakkımızda</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a style="color: white" href="blog">Blog</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a style="color: white" href="web/blog.php">Blog</a></li>
               <li><i class="bx bx-chevron-right"></i> <a style="color: white" href="iletisim">İletişim</a></li>
             </ul>
           </div>
