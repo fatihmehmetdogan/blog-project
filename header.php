@@ -1,9 +1,17 @@
 <?php
 require_once 'admin/baglanti.php';
 require_once 'function.php';
-$ayarsor=$baglanti->prepare("SELECT * FROM ayarlar where ayar_id=?");
-$ayarsor->execute(array(1));
-$ayarcek=$ayarsor->fetch(PDO::FETCH_ASSOC);
+require_once "bootstrap.php";
+
+
+
+$product = new user();
+$product->setName($newProductName);
+
+$entityManager = GetEntityManager();
+
+$entityManager->persist($product);
+$entityManager->flush();
 
 $hakkimizdasor=$baglanti->prepare("SELECT * FROM hakkimizda where hakkimizda_id=?");
 $hakkimizdasor->execute(array(1));

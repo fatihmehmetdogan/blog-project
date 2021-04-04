@@ -1,13 +1,15 @@
 <?php
 // src/Product.php
 
+
+
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="users")
  */
-class users
+class user
 {
     /**
      * @ORM\Id
@@ -24,11 +26,11 @@ class users
      */
     private $user_name;
     /**
-     * @ORM\Column(type="integer"
+     * @ORM\Column(type="string"
      */
     private $user_password;
     /**
-     * @ORM\Column(type="")
+     * @ORM\Column(type="string)
      */
     private $user_email;
     /**
@@ -45,19 +47,27 @@ class users
     }
 
     /**
-     * @param mixed $id
+     * @return mixed
      */
-    public function setId($id): void
+    public function getUserId()
     {
-        $this->id = $id;
+        return $this->user_id;
+    }
+
+    /**
+     * @param mixed $user_id
+     */
+    public function setUserId($user_id): void
+    {
+        $this->user_id = $user_id;
     }
 
     /**
      * @return mixed
      */
-    public function getUserEmail()
+    public function getUserName()
     {
-        return $this->user_email;
+        return $this->user_name;
     }
 
     /**
@@ -67,6 +77,10 @@ class users
     {
         $this->user_name = $user_name;
     }
+
+
+
+
     /**
      * @return mixed
      */
@@ -81,6 +95,22 @@ class users
     public function setUserPassword($user_password): void
     {
         $this->user_password = $user_password;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUserEmail()
+    {
+        return $this->user_email;
+    }
+
+    /**
+     * @param mixed $user_email
+     */
+    public function setUserEmail($user_email): void
+    {
+        $this->user_email = $user_email;
     }
 
     /**
