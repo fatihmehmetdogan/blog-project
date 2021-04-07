@@ -1,11 +1,9 @@
 <?php 
 session_start();
 require_once 'baglanti.php';
-$kullanicisor=$baglanti->prepare("SELECT * FROM kullanici  where kullanici_email=:kullanici_email");
-$kullanicisor->execute(array(
-'kullanici_email'=>$_SESSION['giris']             #benim session ile girdiğim email varsa otomatik var sayacak
-));
-$var=$kullanicisor->rowCount();
+
+
+
 if ($var=="0") {
   Header("Location:giris.php?durum=girisyap");
 }

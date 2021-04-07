@@ -3,23 +3,14 @@ require_once 'admin/baglanti.php';
 require_once 'function.php';
 require_once "bootstrap.php";
 
+$dbParams = "SELECT * FROM blog where blog_id=?";
+$query = $entityManager->createQuery($dbParams);
 
 
-$product = new user();
-$product->setName($newProductName);
 
-$entityManager = GetEntityManager();
+$dbParams = "SELECT * FROM slider where slider_id=?";
+$query1 = $entityManager->createQuery($dbParams);
 
-$entityManager->persist($product);
-$entityManager->flush();
-
-$hakkimizdasor=$baglanti->prepare("SELECT * FROM hakkimizda where hakkimizda_id=?");
-$hakkimizdasor->execute(array(1));
-$hakkimizdacek=$hakkimizdasor->fetch(PDO::FETCH_ASSOC);
-
-$slidersor=$baglanti->prepare("SELECT * FROM slider where slider_id=?");
-$slidersor->execute(array(1));
-$slidercek=$slidersor->fetch(PDO::FETCH_ASSOC);
  ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,9 +18,9 @@ $slidercek=$slidersor->fetch(PDO::FETCH_ASSOC);
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title><?php echo $ayarcek['ayar_baslik'] ?></title>
-  <meta content="<?php echo $ayarcek['ayar_aciklama'] ?>" name="descriptison">
-  <meta content="<?php echo $ayarcek['ayar_anahtar'] ?>" name="keywords">
+  <title><?php echo $query2['ayar_title'] ?></title>
+  <meta content="<?php echo $query2['ayar_content'] ?>" name="descriptison">
+  <meta content="<?php echo $query2['ayar_anahtar'] ?>" name="keywords">
 
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
@@ -60,7 +51,7 @@ $slidercek=$slidersor->fetch(PDO::FETCH_ASSOC);
       <nav class="nav-menu d-none d-lg-block">
         <ul>
           <li class="active"><a href="index.php">Anasayfa</a></li>
-          <li><a href="hakkimizda.php">Hakkımızda</a></li>
+          <!--<li><a href="hakkimizda.php">Hakkımızda</a></li>-->
           <!--<li><a href="ekip.php">Ekibimiz</a></li>-->
           <!--<li><a href="galeri.php">Galeri</a></li>-->
          <!-- <li><a href="blog.php">Blog</a></li>-->

@@ -18,23 +18,19 @@ class user
      */
     private $id;
     /**
-     * @ORM\Column(type="integer")
-     */
-    private $user_id;
-    /**
      * @ORM\Column(type="string")
      */
     private $user_name;
     /**
-     * @ORM\Column(type="string"
+     * @ORM\Column(type="string")
      */
     private $user_password;
     /**
-     * @ORM\Column(type="string)
+     * @ORM\Column(type="string")
      */
     private $user_email;
     /**
-     *@ORM\Column(type="datetime")
+     *@ORM\Column(type="string")
      */
     private $user_time;
 
@@ -46,21 +42,6 @@ class user
         return $this->id;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getUserId()
-    {
-        return $this->user_id;
-    }
-
-    /**
-     * @param mixed $user_id
-     */
-    public function setUserId($user_id): void
-    {
-        $this->user_id = $user_id;
-    }
 
     /**
      * @return mixed
@@ -77,8 +58,6 @@ class user
     {
         $this->user_name = $user_name;
     }
-
-
 
 
     /**

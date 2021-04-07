@@ -2,12 +2,17 @@
 // create_product.php <name>
 require_once "bootstrap.php";
 
-$newProductName = $argv[1];
+$newUserName = $argv[1];
 
-$product = new user();
-$product->setUserName($newProductName);
+$User = new user();
+$User->setUserId($newUserName);
+$User->setUserName($newUserName);
+$User->setUserPassword($newUserName);
+$User->setUserEmail($newUserName);
+$User->setUserTime($newUserName);
 
-$entityManager->persist($product);
+
+$entityManager->persist($User);
 $entityManager->flush();
 
-echo "Created Product with ID " . $product->getId() . "\n";
+echo "Created User with ID " . $User->getId() . "\n";

@@ -1,9 +1,10 @@
 <?php require_once 'header.php';
 require_once 'sidebar.php';
 
-$slidersor=$baglanti->prepare("SELECT * FROM slider where slider_id=?");
-$slidersor->execute(array(1));
-$slidercek=$slidersor->fetch(PDO::FETCH_ASSOC);
+$em = $this->getDoctrine()->getManager();
+$query = $em->createQuery('SELECT u FROM slider u');
+$slider = $query->getResult();
+
  ?>
   <div class="content-wrapper">
     <section class="content">
@@ -26,19 +27,19 @@ if (@$_GET['durum']=="okey") { ?>
                 <div class="card-body">
                     <div class="form-group">
                     <label for="exampleInputEmail1">Slider Resim</label>
-                    <img style="width:200px" src="resimler/slider/<?php echo $slidercek['slider_resim'] ?>">
+                    <img style="width:200px" src="resimler/slider/<?php echo $slider['slider_image'] ?>">
                   </div>
-                  <input type="hidden" name="eskiresim" value="<?php echo $slidercek['slider_resim'] ?>">
+                  <input type="hidden" name="eskiresim" value="<?php echo $slider['slider_image'] ?>">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Slider Resim</label>
                     <input name="resim"  type="file" class="form-control"  >
                   </div>
                    <div class="form-group">
                     <label for="exampleInputEmail1">Slider Başlık</label>
-                    <input name="baslik" value="<?php echo  $slidercek['slider_baslik'] ?>" type="text" class="form-control"  placeholder="Lütfen sitenizin başlığını giriniz.">
+                    <input name="baslik" value="<?php echo  $slider['slider_title'] ?>" type="text" class="form-control"  placeholder="Lütfen sitenizin başlığını giriniz.">
                      <div class="form-group">
                     <label for="exampleInputEmail1">Slider  Açıklama</label>
-                    <textarea name="aciklama" id="editor1" class="ckeditor"><?php echo $slidercek['slider_aciklama'] ?></textarea>
+                    <textarea name="aciklama" id="editor1" class="ckeditor"><?php echo $slider['slider_content'] ?></textarea>
                   </div>
                 </div>
                 <!-- /.card-body -->

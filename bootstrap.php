@@ -2,14 +2,14 @@
 // bootstrap.php
 require_once "vendor/autoload.php";
 require_once "src/user.php";
-require_once  "src/blog.php";
+require_once "src/blog.php";
 
 
 use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
 
 $paths = array(__DIR__."/src");
-$isDevMode = false;
+$isDevMode = true;
 
 // the connection configuration
 $dbParams = array(
@@ -20,8 +20,12 @@ $dbParams = array(
     'dbname'   => 'blogdb'
 );
 
-$config = Setup::createAnnotationMetadataConfiguration($paths, $isDevMode);
+$config = Setup::createAnnotationMetadataConfiguration($paths, $isDevMode, null, null, false);
 $entityManager = EntityManager::create($dbParams, $config);
+
+
+
+//$conn = Doctrine\DBAL\DriverManager::getConnection($dbParams);
 
 
 

@@ -3,12 +3,12 @@
 ?>
 
     <!-- ======= Hero Section ======= -->
-    <section style="background-image: url(admin/resimler/slider/<?php echo $slidercek['slider_resim'] ?>);"
+    <section style="background-image: url(admin/resimler/slider/<?php echo $query1['slider_image'] ?>);"
              id="hero" class="d-flex justify-content-center align-items-center">
         <div class="container position-relative" data-aos="zoom-in" data-aos-delay="100">
-            <h1><?php echo $slidercek['slider_baslik'] ?>
+            <h1><?php echo $query1['slider_title'] ?>
                 <h1>
-                    <h2><?php echo $slidercek['slider_aciklama'] ?><h2>
+                    <h2><?php echo $query1['slider_content'] ?><h2>
 
         </div>
     </section><!-- End Hero -->
@@ -18,25 +18,25 @@
                 <div class="row" data-aos="zoom-in" data-aos-delay="100">
 
                     <?php
-                    $blogsor = $baglanti->prepare("SELECT * FROM blog order by blog_sira ASC");
-                    $blogsor->execute(array());
+                    $dql = "SELECT * FROM blog order by blog_order ASC ";
 
-                    while ($blogcek = $blogsor->fetch(PDO::FETCH_ASSOC)) { ?>
+
+                    while ($query = $dql->createQuery($dql)) { ?>
 
 
                         <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
                             <div class="course-item">
                                 <img style="height: 250px"
-                                     src="admin/resimler/blog/<?php echo $blogcek['blog_resim'] ?>" class="img-fluid"
+                                     src="admin/resimler/blog/<?php echo $query['blog_image'] ?>" class="img-fluid"
                                      alt="...">
                                 <div class="course-content">
 
 
                                     <h3>
-                                        <a href="blog-detay-<?= seo($blogcek['blog_baslik']) . '-' . $blogcek['blog_id'] ?>"><?php echo $blogcek['blog_baslik'] ?></a>
+                                        <a href="blog-detay-<?= seo($query['blog_title']) . '-' . $query['blog_id'] ?>"><?php echo $query['blog_content'] ?></a>
                                     </h3>
                                     <p><?php
-                                        $aciklama = $blogcek['blog_aciklama'];   # yazının bi bölümünü alıyor
+                                        $aciklama = $query['blog_content'];   # yazının bi bölümünü alıyor
                                         $bolaciklama = substr($aciklama, 0, 50);
                                         echo $bolaciklama;
                                         ?></p>
