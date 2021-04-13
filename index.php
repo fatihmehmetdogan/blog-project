@@ -3,12 +3,12 @@
 ?>
 
     <!-- ======= Hero Section ======= -->
-    <section style="background-image: url(admin/resimler/slider/<?php echo $query1['slider_image'] ?>);"
+    <section style="background-image: url(admin/resimler/slider/<?php echo $query['slider_image'] ?>);"
              id="hero" class="d-flex justify-content-center align-items-center">
         <div class="container position-relative" data-aos="zoom-in" data-aos-delay="100">
-            <h1><?php echo $query1['slider_title'] ?>
+            <h1><?php echo $query['slider_title'] ?>
                 <h1>
-                    <h2><?php echo $query1['slider_content'] ?><h2>
+                    <h2><?php echo $query['slider_content'] ?><h2>
 
         </div>
     </section><!-- End Hero -->
@@ -18,8 +18,6 @@
                 <div class="row" data-aos="zoom-in" data-aos-delay="100">
 
                     <?php
-                    $dql = "SELECT * FROM blog order by blog_order ASC ";
-
 
                     while ($query = $dql->createQuery($dql)) { ?>
 

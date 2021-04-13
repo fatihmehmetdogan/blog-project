@@ -1,15 +1,8 @@
 <?php
 require_once 'admin/baglanti.php';
 require_once 'function.php';
-require_once "bootstrap.php";
+require_once 'bootstrap.php';
 
-$dbParams = "SELECT * FROM blog where blog_id=?";
-$query = $entityManager->createQuery($dbParams);
-
-
-
-$dbParams = "SELECT * FROM slider where slider_id=?";
-$query1 = $entityManager->createQuery($dbParams);
 
  ?>
 <!DOCTYPE html>
@@ -18,9 +11,9 @@ $query1 = $entityManager->createQuery($dbParams);
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title><?php echo $query2['ayar_title'] ?></title>
-  <meta content="<?php echo $query2['ayar_content'] ?>" name="descriptison">
-  <meta content="<?php echo $query2['ayar_anahtar'] ?>" name="keywords">
+  <title><?php echo $blog['setting_title'] ?></title>
+  <meta content="<?php echo $blog['setting_content'] ?>" name="descriptison">
+
 
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
@@ -58,9 +51,9 @@ $query1 = $entityManager->createQuery($dbParams);
             <li class="drop-down"><a href="">Kategoriler</a>
                 <ul>
                     <?php
-                    foreach ($baglanti->query("SELECT * FROM kategori")as $kat) {
+                    foreach ($baglanti->query("SELECT * FROM category")as $kat) {
                         echo '<li>
-                        <a href="kategori-detay.php?katid='.$kat["kategori_id"].'">'.$kat["kategori_baslik"].'</a>
+                        <a href="kategori-detay.php?katid='.$kat["category_id"].'">'.$kat["categoryi_title"].'</a>
             </li>';
 }
                     ?>

@@ -1,5 +1,5 @@
 <?php
-// src/Product.php
+
 
 
 use Doctrine\Common\Collections\ArrayCollection;
@@ -42,6 +42,7 @@ class blog
     public function __construct()
     {
         $this->categorys = new ArrayCollection();
+
     }
 
     /**
@@ -69,6 +70,8 @@ class blog
         }
         return $this;
     }
+
+
 
     /**
      * @return mixed

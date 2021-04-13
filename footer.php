@@ -8,9 +8,9 @@
           <div class="col-lg-3 col-md-6 footer-contact">
             <h3 style="color: white">Blog Sitesi</h3>
             <p style="color: white">
-              Adresimiz:<?php echo $ayarcek['ayar_adres']; ?><br>
-              <strong>Telefon:<?php echo $ayarcek['ayar_telefon']?><br>
-              <strong>Email:<?php echo $ayarcek['ayar_email']?><br>
+              Adresimiz:<?php echo $settings['setting_address']; ?><br>
+              <strong>Telefon:<?php echo $ayarcek['setting_phone']?><br>
+              <strong>Email:<?php echo $ayarcek['setting_email']?><br>
             </p>
           </div>
           <div class="col-lg-2 col-md-6 footer-links">

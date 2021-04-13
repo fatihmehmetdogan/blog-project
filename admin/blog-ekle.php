@@ -2,7 +2,7 @@
 require_once 'header.php';
 require_once 'sidebar.php';
 require_once 'baglanti.php';
-$kategoriBaglanti=$baglanti->prepare("SELECT * FROM kategori");
+$kategoriBaglanti=$baglanti->prepare("SELECT * FROM category");
 $kategoriBaglanti->execute(array());
 $kategoriler=$kategoriBaglanti->fetchAll();
  ?>
@@ -37,8 +37,8 @@ $kategoriler=$kategoriBaglanti->fetchAll();
                     <div class="form-group">
                         <b>KATEGORİLER</b> <br>
                     <?php
-                        foreach($kategoriler as $kategori)
-                        echo '<label><input type="checkbox"  name="katid[]" value="'.$kategori['kategori_id'].'"/>'.$kategori['kategori_baslik'].'</label><br/>';
+                        foreach($kategoriler as $category)
+                        echo '<label><input type="checkbox"  name="katid[]" value="'.$category['id'].'"/>'.$category['category_title'].'</label><br/>';
                         ?>
                     </div>
                 </div>

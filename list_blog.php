@@ -2,9 +2,13 @@
 // list_products.php
 require_once "bootstrap.php";
 
-$productRepository = $entityManager->getRepository('blog');
-$products = $productRepository->findAll();
+/* @var $entityManager Doctrine\ORM\EntityManager */
+$BlogRepository = $entityManager->getRepository('blog');
+$blogs = $BlogRepository->findAll();
 
-foreach ($products as $blog) {
-    echo sprintf("-%s\n", $blog->getName());
+foreach ($blogs as $blog) {
+    echo sprintf("-%s\n", $blog->getId());
+    echo sprintf("-%s\n", $blog->getBlogTitle());
+    echo sprintf("-%s\n", $blog->getBlogContent());
+    echo sprintf("-%s\n", $blog->getBlogImage());
 }

@@ -1,15 +1,16 @@
 <?php
-// create_product.php <name>
 require_once "bootstrap.php";
+$newUserName2 = $argv[1];
+$newUserName3 = $argv[2];
+$newUserName4 = $argv[3];
+$newUserName5 = $argv[4];
 
-$newUserName = $argv[1];
+$User = new User();
 
-$User = new user();
-$User->setUserId($newUserName);
-$User->setUserName($newUserName);
-$User->setUserPassword($newUserName);
-$User->setUserEmail($newUserName);
-$User->setUserTime($newUserName);
+$User->setUserName($newUserName2);
+$User->setUserPassword($newUserName3);
+$User->setUserEmail($newUserName4);
+$User->setUserTime($newUserName5);
 
 
 $entityManager->persist($User);

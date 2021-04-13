@@ -1,10 +1,10 @@
 <?php
 try {
-	$baglanti=new PDO('mysql:host=localhost; dbname=blogdb; 
+    $baglanti=new PDO('mysql:host=localhost; dbname=blogdb; 
 		charset=utf8;', 'root', '');
-	#echo "baglantı başarılı";
+    #echo "baglantı başarılı";
 } catch (Exception $e) {
-	echo "Hata yaptın :".$e->getMessage();
+    echo "Hata yaptın :".$e->getMessage();
 }
 
 

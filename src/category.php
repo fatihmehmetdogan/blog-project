@@ -40,6 +40,13 @@ class category
         $this->blogs = new ArrayCollection();
     }
 
+    /**
+     * @param ArrayCollection $blogs
+     */
+    public function setBlogs(ArrayCollection $blogs): void
+    {
+        $this->blogs = $blogs;
+    }
 
     /**
      * @return Collection|blog[]

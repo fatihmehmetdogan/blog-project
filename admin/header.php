@@ -3,10 +3,6 @@ session_start();
 require_once 'baglanti.php';
 
 
-
-if ($var=="0") {
-  Header("Location:giris.php?durum=girisyap");
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,5 +42,5 @@ if ($var=="0") {
         <a href="index.php" class="nav-link">Anasayfa</a>
       </li>
     </ul>
-<?php echo $_SESSION['giris'];  ?>
+
   </nav>

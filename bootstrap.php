@@ -1,8 +1,7 @@
 <?php
 // bootstrap.php
 require_once "vendor/autoload.php";
-require_once "src/user.php";
-require_once "src/blog.php";
+require_once "blog.php";
 
 
 use Doctrine\ORM\Tools\Setup;
@@ -24,13 +23,12 @@ $config = Setup::createAnnotationMetadataConfiguration($paths, $isDevMode, null,
 $entityManager = EntityManager::create($dbParams, $config);
 
 
-
-//$conn = Doctrine\DBAL\DriverManager::getConnection($dbParams);
-
-
-
 // or if you prefer yaml or XML
 //$config = Setup::createXMLMetadataConfiguration(array(__DIR__."/config/xml"), $isDevMode);
 //$config = Setup::createYAMLMetadataConfiguration(array(__DIR__."/config/yaml"), $isDevMode);
+
+
+
+
 
 
