@@ -2,17 +2,17 @@
 // create_blog.php <name>
 require_once "bootstrap.php";
 
-$newUserName2 = $argv[1];
-$newUserName3 = $argv[2];
-$newUserName4 = $argv[3];
-$newUserName5 = $argv[4];
+$newBlog = $argv[1];
+$newBlog2 = $argv[2];
+$newBlog3 = $argv[3];
+$newBlog4 = $argv[4];
 
 $Blog = new blog();
 
-$Blog->setBlogTitle($newUserName2);
-$Blog->setBlogContent($newUserName3);
-$Blog->setBlogImage($newUserName4);
-$Blog->setBlogOrder($newUserName5);
+$Blog->setBlogTitle($newBlog);
+$Blog->setBlogContent($newBlog2);
+$Blog->setBlogImage($newBlog3);
+$Blog->setBlogOrder($newBlog4);
 
 
 $entityManager->persist($Blog);

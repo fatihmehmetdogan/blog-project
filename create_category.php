@@ -3,18 +3,18 @@
 require_once "bootstrap.php";
 
 
-$newUserName2 = $argv[1];
-$newUserName3 = $argv[2];
-$newUserName4 = $argv[3];
+$newCategory = $argv[1];
+$newCategory2 = $argv[2];
+$newCategory3 = $argv[3];
 
-$Blog = new category();
+$Category = new category();
 
-$Blog->setCategoryTitle($newUserName2);
-$Blog->setCategoryImage($newUserName3);
-$Blog->setCategoryOrder($newUserName4);
+$Category->setCategoryTitle($newCategory);
+$Category->setCategoryImage($newCategory2);
+$Category->setCategoryOrder($newCategory3);
 
 
-$entityManager->persist($Blog);
+$entityManager->persist($Category);
 $entityManager->flush();
 
-echo "Created category with ID " . $Blog->getId() . "\n";
+echo "Created category with ID " . $Category->getId() . "\n";
