@@ -2,7 +2,9 @@
 require_once 'header.php';
 require_once 'bootstrap.php';
 
-
+/* @var $entityManager Doctrine\ORM\EntityManager */
+$BlogRepository = $entityManager->getRepository('blog');
+$blogs = $BlogRepository->findAll();
 
 
 ?>
@@ -13,8 +15,7 @@ require_once 'bootstrap.php';
             <div class="container" data-aos="fade-up">
                 <div class="row" data-aos="zoom-in" data-aos-delay="100">
                     <?php
-                   {
-
+                    foreach ($blogs as $blog) {
                      ?>
                         <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
                             <div class="course-item">
