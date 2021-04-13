@@ -6,7 +6,6 @@ require_once 'bootstrap.php';
 $BlogRepository = $entityManager->getRepository('blog');
 $blogs = $BlogRepository->findAll();
 
-
 ?>
     <br><br>
     <main id="main" data-aos="fade-in">
@@ -20,14 +19,14 @@ $blogs = $BlogRepository->findAll();
                         <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
                             <div class="course-item">
                                 <img style="height: 250px"
-                                     src="admin/resimler/blog/<?php echo $blog['blog_image'] ?>" class="img-fluid"
+                                     src="admin/resimler/blog/<?php echo $blog->getBlogImage() ?>" class="img-fluid"
                                      alt="...">
                                 <div class="course-content">
                                     <h3>
-                                        <a href="blog-detay-<?= seo($blog['blog_title']) . '-' . $blog['blog_id'] ?>"><?php echo $blog['blog_title'] ?></a>
+                                        <a href="blog-detay-<?= seo($blog->getBlogTitle()) . '-' . $blog->getId() ?>"><?php echo $blog->getBlogContent() ?></a>
                                     </h3>
                                     <p><?php
-                                        $aciklama = $blog['blog_content'];   # yazının bi bölümünü alıyor
+                                        $aciklama = $blog->getBlogContent();   # yazının bi bölümünü alıyor
                                         $bolaciklama = substr($aciklama, 0, 50);
                                         echo $bolaciklama;
                                         ?></p>
