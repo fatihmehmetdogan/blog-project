@@ -1,3 +1,9 @@
+<?php
+require_once 'bootstrap.php';
+/* @var $entityManager Doctrine\ORM\EntityManager */
+$SettingsRepository = $entityManager->getRepository('settings');
+$settings = $SettingsRepository->findAll();
+?>
 <!-- ======= Footer ======= -->
   <footer style="background-color: black" id="footer">
 
@@ -7,13 +13,18 @@
 
           <div class="col-lg-3 col-md-6 footer-contact">
             <h3 style="color: white">Blog Sitesi</h3>
+              <?php
+              foreach ($settings as $setting) {
+              ?>
             <p style="color: white">
-              Adresimiz:<?php echo $settings['setting_address']; ?><br>
-              <strong>Telefon:<?php echo $ayarcek['setting_phone']?><br>
-              <strong>Email:<?php echo $ayarcek['setting_email']?><br>
+              Adresimiz:<?php echo $setting->getSettingAddress() ?><br>
+              <strong>Telefon:<?php echo $setting->getSettingPhone() ?><br>
+              <strong>Email:<?php echo $setting->getSettingEmail()?><br>
             </p>
           </div>
-          <div class="col-lg-2 col-md-6 footer-links">
+            <?php } ?>
+
+            <div class="col-lg-2 col-md-6 footer-links">
             <h4 style="color: white">Sayfalarımız</h4>
             <ul>
               <li><i class="bx bx-chevron-right"></i> <a style="color: white" href="index">Anasayfa</a></li>

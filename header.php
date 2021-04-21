@@ -3,6 +3,17 @@ require_once 'admin/baglanti.php';
 require_once 'function.php';
 require_once 'bootstrap.php';
 
+/* @var $entityManager Doctrine\ORM\EntityManager */
+$SettingsRepository = $entityManager->getRepository('settings');
+$settingss = $SettingsRepository->findAll();
+
+/* @var $entityManager Doctrine\ORM\EntityManager */
+$SliderRepository = $entityManager->getRepository('slider');
+$sliders = $SliderRepository->findAll();
+
+/* @var $entityManager Doctrine\ORM\EntityManager */
+$CategoryRepository = $entityManager->getRepository('category');
+$categorys = $CategoryRepository->findAll();
 
  ?>
 <!DOCTYPE html>
@@ -11,8 +22,8 @@ require_once 'bootstrap.php';
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title><?php echo $blog['setting_title'] ?></title>
-  <meta content="<?php echo $blog['setting_content'] ?>" name="descriptison">
+  <title><?php echo $settingss['setting_title'] ?></title>
+  <meta content="<?php echo $settingss['setting_content'] ?>" name="descriptison">
 
 
   <!-- Favicons -->
@@ -51,12 +62,13 @@ require_once 'bootstrap.php';
             <li class="drop-down"><a href="">Kategoriler</a>
                 <ul>
                     <?php
-                    foreach ($baglanti->query("SELECT * FROM category")as $kat) {
+                    foreach ($categorys as $category) {
+
                         echo '<li>
-                        <a href="kategori-detay.php?katid='.$kat["category_id"].'">'.$kat["categoryi_title"].'</a>
+                        <a href="kategori-detay.php?category='.$category->getId().'">'.$category->getCategoryTitle().'</a>
             </li>';
-}
-                    ?>
+
+                   } ?>
                 </ul>
             </li>
             <li><a href="iletisim.php">İletişim</a></li>

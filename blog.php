@@ -1,6 +1,5 @@
 <?php
 require_once 'header.php';
-require_once 'bootstrap.php';
 
 /* @var $entityManager Doctrine\ORM\EntityManager */
 $BlogRepository = $entityManager->getRepository('blog');
@@ -23,7 +22,8 @@ $blogs = $BlogRepository->findAll();
                                      alt="...">
                                 <div class="course-content">
                                     <h3>
-                                        <a href="blog-detay-<?= seo($blog->getBlogTitle()) . '-' . $blog->getId() ?>"><?php echo $blog->getBlogContent() ?></a>
+
+                                        <a href="blog-detay-<?= seo($blog->getBlogTitle()) . '-' . $blog->getId() ?>"><?php echo $blog->getBlogTitle() ?></a>
                                     </h3>
                                     <p><?php
                                         $aciklama = $blog->getBlogContent();   # yazının bi bölümünü alıyor

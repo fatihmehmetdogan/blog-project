@@ -31,7 +31,8 @@ class category
      */
     private $category_image;
     /**
-     * @ORM\ManyToMany(targetEntity="blog", mappedBy="categorys")
+     * @ORM\ManyToMany(targetEntity="blog", mappedBy="categories")
+     * @var Collection
      */
     private $blogs;
 
@@ -39,6 +40,11 @@ class category
     {
         $this->blogs = new ArrayCollection();
     }
+
+
+
+
+
 
     /**
      * @param ArrayCollection $blogs
@@ -61,7 +67,7 @@ class category
     {
         if(!$this->blogs->contains($blog)){
             $this->blogs[]= $blog;
-            $blog->addblog[$this];
+            $blog->addcategories($this);
         }
         return $this;
     }

@@ -1,13 +1,22 @@
 <?php
 
 require_once 'header.php';
-$katid = $_GET["katid"];
+require_once 'bootstrap.php';
+
+$category = $_GET["category"];
+
+$dql = "SELECT b, e FROM blog b JOIN b.id e JOIN b.reporter  ORDER BY b.created DESC";
+$query = $entityManager->createQuery($dql);
+$bugs = $query->getResult();
+
+
+
 $query = $baglanti->prepare("SELECT * FROM blog
 LEFT JOIN blog_to_kategori ON blog.blog_id = blog_to_kategori.blog_id WHERE blog_to_kategori.kategori_id=:katid
 ORDER BY blog.blog_id
   ");
 $query->execute(array(
-        "katid"=>$katid
+        "category"=>$category
 ));
 $goster = $query->fetchAll(PDO::FETCH_ASSOC);
 ?>

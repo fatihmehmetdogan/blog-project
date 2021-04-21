@@ -36,40 +36,57 @@ class blog
     private $blog_order;
     /**
      * @ORM\ManyToMany(targetEntity="category", inversedBy="blogs")
+     * @var Collection
      */
-    private $categorys;
+    private $categories;
 
     public function __construct()
     {
-        $this->categorys = new ArrayCollection();
+        $this->categories = new ArrayCollection();
 
     }
 
     /**
      * @return Collection|category[]
      */
-    public function getCategorys(): Collection
+    public function getCategories(): Collection
     {
-        return $this->categorys;
+        return $this->categories;
     }
 
-    public function addcategory(category $category): self
+    /**
+     * @param Collection $categories
+     */
+    public function setCategories(category $categories): void
     {
-        if(!$this->categorys->contains($category)){
-            $this->categorys[]= $category;
-            $category->addblog[$this];
+        $categories->addblog($this);
+        $this->categories = $categories;
+    }
+
+
+
+
+    public function addcategories(category $category): self
+    {
+        if(!$this->categories->contains($category)){
+            $this->categories[]= $category;
+            $category->addblog($this);
         }
         return $this;
     }
 
     public function removecategory(category $category): self
     {
-        if(!$this->categorys->contains($category)){
-            $this->categorys->removeElement($category);
+        if(!$this->categories->contains($category)){
+            $this->categories->removeElement($category);
             $category->removeblog($this);
         }
         return $this;
     }
+
+
+
+
 
 
 
@@ -81,6 +98,14 @@ class blog
         return $this->id;
     }
 
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id): void
+    {
+        $this->id = $id;
+    }
 
     /**
      * @return mixed

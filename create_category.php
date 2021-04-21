@@ -13,7 +13,7 @@ $Category->setCategoryTitle($newCategory);
 $Category->setCategoryImage($newCategory2);
 $Category->setCategoryOrder($newCategory3);
 
-
+/* @var $entityManager Doctrine\ORM\EntityManager */
 $entityManager->persist($Category);
 $entityManager->flush();
 

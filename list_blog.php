@@ -1,5 +1,5 @@
 <?php
-// list_products.php
+// list_blog.php
 require_once "bootstrap.php";
 
 /* @var $entityManager Doctrine\ORM\EntityManager */
