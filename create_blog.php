@@ -12,6 +12,7 @@ $newBlog4 = $argv[4];
 $newCategory =  explode(",", $argv[5]);
 
 
+
 $Blog = new blog();
 
 $Blog->setBlogTitle($newBlog);
@@ -23,6 +24,7 @@ foreach ($newCategory as $newCategories) {
     $category = $entityManager->find("category", $newCategories);
     $Blog->addcategories($category);
 }
+
 $entityManager->persist($Blog);
 
 $entityManager->flush();

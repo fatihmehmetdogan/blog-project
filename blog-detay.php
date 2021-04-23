@@ -2,11 +2,8 @@
 require_once "bootstrap.php";
 
 /* @var $entityManager Doctrine\ORM\EntityManager */
-$BlogRepository = $entityManager->getRepository('blog');
-$blogs = $BlogRepository->findAll();
 
-
-
+$blog = $entityManager->find('blog', 1);
 
 ?>
 
@@ -15,10 +12,9 @@ $blogs = $BlogRepository->findAll();
         <!-- ======= Cource Details Section ======= -->
         <section id="course-details" class="course-details">
             <div class="container" data-aos="fade-up">
+
                 <div class="row">
-                    <?php
-                    foreach ($blogs as $blog) {
-                    ?>
+
                     <div class="col-lg-8">
 
                         <img src="admin/resimler/blog/<?php echo $blog->getBlogImage() ?>" class="img-fluid" alt="">
@@ -27,7 +23,6 @@ $blogs = $BlogRepository->findAll();
                             <?php echo $blog->getBlogContent() ?>
                         </p>
 
-                        <?php } ?>
 
 
                         <form action="admin/islem.php" method="post">

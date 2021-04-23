@@ -43,9 +43,6 @@ class category
 
 
 
-
-
-
     /**
      * @param ArrayCollection $blogs
      */

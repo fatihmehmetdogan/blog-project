@@ -1,9 +1,7 @@
 <?php require_once 'header.php';
 require_once 'sidebar.php';
+require_once '../bootstrap.php';
 
-$em = $this->getDoctrine()->getManager();
-$query = $em->createQuery('SELECT u FROM slider u');
-$slider = $query->getResult();
 
  ?>
   <div class="content-wrapper">
@@ -25,24 +23,26 @@ if (@$_GET['durum']=="okey") { ?>
               <!-- form start -->
               <form action="islem.php" method="post" enctype="multipart/form-data">
                 <div class="card-body">
+
                     <div class="form-group">
                     <label for="exampleInputEmail1">Slider Resim</label>
-                    <img style="width:200px" src="resimler/slider/<?php echo $slider['slider_image'] ?>">
+                    <img style="width:200px" src="resimler/slider/">
                   </div>
-                  <input type="hidden" name="eskiresim" value="<?php echo $slider['slider_image'] ?>">
+                  <input type="hidden" name="eskiresim" value="">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Slider Resim</label>
                     <input name="resim"  type="file" class="form-control"  >
                   </div>
                    <div class="form-group">
                     <label for="exampleInputEmail1">Slider Başlık</label>
-                    <input name="baslik" value="<?php echo  $slider['slider_title'] ?>" type="text" class="form-control"  placeholder="Lütfen sitenizin başlığını giriniz.">
+                    <input name="baslik" value="" type="text" class="form-control"  placeholder="Lütfen sitenizin başlığını giriniz.">
                      <div class="form-group">
                     <label for="exampleInputEmail1">Slider  Açıklama</label>
-                    <textarea name="aciklama" id="editor1" class="ckeditor"><?php echo $slider['slider_content'] ?></textarea>
+                    <textarea name="aciklama" id="editor1" class="ckeditor"></textarea>
                   </div>
                 </div>
-                <!-- /.card-body -->
+
+                    <!-- /.card-body -->
                 <div class="card-footer">
                   <button name="sliderkaydet" style="float:right" type="submit" class="btn btn-primary">Kaydet</button>
                 </div>
