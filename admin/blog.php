@@ -1,6 +1,9 @@
 <?php require_once 'header.php';
 require_once 'sidebar.php';
-
+require_once '../bootstrap.php';
+/* @var $entityManager Doctrine\ORM\EntityManager */
+$BlogRepository = $entityManager->getRepository('blog');
+$blogs = $BlogRepository->findAll();
  ?>
   <div class="content-wrapper">
     <section class="content">
@@ -31,20 +34,19 @@ if (@$_GET['durum']=="okey") { ?>
                     </tr>
                   </thead>
                   <tbody>
-                    <?php
-while ($query2 = $query->execute([
-    'blog_order'=>'jon'
-])) { ?>
+                  <?php
+                  foreach ($blogs as $blog) {
+                      ?>
                     <tr>
-                      <td><img style="width:150px" src="resimler/blog/<?php echo $query2['blog_image'] ?>"></td>
-                          <td><?php echo $query2['blog_title'] ?></td>
-                      <td><?php echo $query2['blog_order'] ?></td>
-                      <td><a href="blog-duzenle.php?id=<?php echo $query2['blog_id'] ?>"><button type="submit" class="btn btn-success">Düzenle</button></td>
+                      <td><img style="width:150px" src="resimler/blog/<?php echo $blog->getBlogImage() ?>"></td>
+                          <td><?php echo $blog->getBlogTitle() ?></td>
+                      <td><?php echo $blog->getBlogOrder() ?></td>
+                      <td><a href="blog-duzenle.php?id=<?php echo $blog->getId() ?>"><button type="submit" class="btn btn-success">Düzenle</button></td>
                          <td>
                            <form action="islem.php" method="post">
                           <button  name="blogsil" type="submit" class="btn btn-danger">Sil</button>
-                          <input name="id" value="<?php echo $query2['blog_id'] ?>" type="hidden">
-                           <input name="eskiresim" value="<?php echo $query2['blog_image'] ?>" type="hidden">
+                          <input name="id" value="<?php echo $blog->getId() ?>" type="hidden">
+                           <input name="eskiresim" value="<?php echo $blog->getBlogImage() ?>" type="hidden">
                            </form>
                         </td>
                     </tr>
