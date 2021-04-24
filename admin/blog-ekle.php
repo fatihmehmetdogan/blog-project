@@ -40,9 +40,10 @@ $categories = $CategoryRepository->findAll();
                     <div class="form-group">
                         <b>KATEGORİLER</b> <br>
                     <?php
-                        foreach($categories as $category)
+                        foreach($categories as $category){
                         echo '<label><input type="checkbox"  name="katid[]" value="'.$category->getId().'"/>'.$category->getCategoryTitle().'</label><br/>';
                         ?>
+                            <?php    } ?>
                     </div>
                 </div>
                 <div class="card-footer">

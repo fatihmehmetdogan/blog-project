@@ -1,8 +1,10 @@
 <?php require_once 'header.php';
 require_once 'sidebar.php';
-$kategorisor=$baglanti->prepare("SELECT * FROM kategori order by kategori_sira ");
-$kategorisor->execute(array(
-));
+require_once '../bootstrap.php';
+
+/* @var $entityManager Doctrine\ORM\EntityManager */
+$CategoryRepository = $entityManager->getRepository('category');
+$categories = $CategoryRepository->findAll();
 
  ?>
   <div class="content-wrapper">
@@ -38,18 +40,19 @@ if (@$_GET['durum']=="okey") { ?>
                     </tr>
                   </thead>
                   <tbody>
-                    <?php
-while ($kategoricek=$kategorisor->fetch(PDO::FETCH_ASSOC)) { ?>
+                  <?php
+                        foreach($categories as $category){
+                            ?>
                     <tr>
-                      <td><img style="width:150px" src="resimler/kategori/<?php echo $kategoricek['kategori_resim'] ?>"></td>
-                          <td><?php echo $kategoricek['kategori_baslik'] ?></td>
-                      <td><?php echo $kategoricek['kategori_sira'] ?></td>
-                      <td><a href="kategori-duzenle.php?id=<?php echo $kategoricek['kategori_id'] ?>"><button type="submit" class="btn btn-success">Düzenle</button></td>
+                      <td><img style="width:150px" src="resimler/kategori/<?php echo $category->getCategoryImage() ?>"></td>
+                          <td><?php echo $category->getCategoryTitle()?></td>
+                      <td><?php echo $category->getCategoryOrder() ?></td>
+                      <td><a href="kategori-duzenle.php?id=<?php echo $category->getId() ?>"><button type="submit" class="btn btn-success">Düzenle</button></td>
                          <td>
                            <form action="islem.php" method="post">
                           <button  name="kategorisil" type="submit" class="btn btn-danger">Sil</button>
-                          <input name="id" value="<?php echo $kategoricek['kategori_id'] ?>" type="hidden">
-                           <input name="eskiresim" value="<?php echo $kategoricek['kategori_resim'] ?>" type="hidden">
+                          <input name="id" value="<?php echo $category->getId()  ?>" type="hidden">
+                           <input name="eskiresim" value="<?php echo $category->getCategoryImage() ?>" type="hidden">
                            </form>
 
                         </td>
