@@ -2,9 +2,12 @@
 require_once 'header.php';
 require_once 'sidebar.php';
 require_once 'baglanti.php';
-$kategoriBaglanti=$baglanti->prepare("SELECT * FROM category");
-$kategoriBaglanti->execute(array());
-$kategoriler=$kategoriBaglanti->fetchAll();
+require_once '../bootstrap.php';
+
+/* @var $entityManager Doctrine\ORM\EntityManager */
+$CategoryRepository = $entityManager->getRepository('category');
+$categories = $CategoryRepository->findAll();
+
  ?>
 <div class="content-wrapper">
     <section class="content">
@@ -37,8 +40,8 @@ $kategoriler=$kategoriBaglanti->fetchAll();
                     <div class="form-group">
                         <b>KATEGORİLER</b> <br>
                     <?php
-                        foreach($kategoriler as $category)
-                        echo '<label><input type="checkbox"  name="katid[]" value="'.$category['id'].'"/>'.$category['category_title'].'</label><br/>';
+                        foreach($categories as $category)
+                        echo '<label><input type="checkbox"  name="katid[]" value="'.$category->getId().'"/>'.$category->getCategoryTitle().'</label><br/>';
                         ?>
                     </div>
                 </div>
