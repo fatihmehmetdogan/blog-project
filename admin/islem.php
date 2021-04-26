@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once 'baglanti.php';
+require_once '../bootstrap.php';
 
 if (isset($_POST['ayarkaydet'])) {     # ayarkaydet adında bi name var mı böyle bi değer geliyorsa
     $kaydet = $baglanti->prepare("UPDATE ayarlar SET
@@ -235,7 +236,6 @@ if (isset($_POST['blogsil'])) {
     }
 }
 if (isset($_POST['kategorikaydet'])) {
-    $katid = $_POST['katid'];
     $uploads_dir = 'resimler/kategori';
     @$tmp_name = $_FILES['resim'] ["tmp_name"];
     @$name = $_FILES['resim'] ["name"];
@@ -245,26 +245,25 @@ if (isset($_POST['kategorikaydet'])) {
     $sayilar = $sayi1 . $sayi2 . $sayi3;
     $resimadi = $sayilar . $name;
     @move_uploaded_file($tmp_name, "$uploads_dir/$resimadi");
-    $kaydet = $baglanti->prepare("INSERT into kategori SET 
-kategori_baslik=:kategori_baslik,
-kategori_sira=:kategori_sira,
-kategori_id=:kategori_id,
-kategori_durum=:kategori_durum,
-kategori_resim=:kategori_resim
-	");
-    $insert = $kaydet->execute(array(
-        'kategori_baslik' => htmlspecialchars($_POST['baslik']),
-        'kategori_sira' => htmlspecialchars($_POST['sira']),
-        'kategori_id' => htmlspecialchars($_POST['katid']),
-        'kategori_durum' => htmlspecialchars($_POST['durum']),
-        'kategori_resim' => $resimadi
-    ));
-    if ($insert) {
+    $katid = ['katid'];
+    $baslik = $_POST['baslik'];
+    $sira = $_POST['sira'];
+    $Category = new category();
+
+    $Category->setCategoryTitle($baslik);
+    $Category->setCategoryImage($resimadi);
+    $Category->setCategoryOrder($sira);
+
+    /* @var $entityManager Doctrine\ORM\EntityManager */
+    $entityManager->persist($Category);
+    $entityManager->flush();
+    if ($Category) {
         Header("Location:kategori.php?katid=$katid&durum=okey");
     } else {
         Header("Location:kategori.php?katid=$katid&durum=no");
     }
 }
+
 if (isset($_POST['kategoriduzenle'])) {
     $duzenle = $baglanti->prepare("UPDATE  kategori SET             
 
