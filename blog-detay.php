@@ -2,9 +2,10 @@
 require_once "bootstrap.php";
 
 /* @var $entityManager Doctrine\ORM\EntityManager */
-
-$blog = $entityManager->find('blog', 1);
-
+$requestUri = $_SERVER['REQUEST_URI'];
+$requestUriItems = explode('-', $requestUri);
+$id = end($requestUriItems);
+$blog = $entityManager->find('blog', $id);
 ?>
 
     <br><br>
