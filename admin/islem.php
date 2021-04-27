@@ -128,18 +128,18 @@ if (isset($_POST['blogkaydet'])) {
     $sayilar = $sayi1 . $sayi2 . $sayi3;
     $resimadi = $sayilar . $name;
     @move_uploaded_file($tmp_name, "$uploads_dir/$resimadi");
-    $kaydet = $baglanti->prepare("INSERT into blog SET
-            blog_baslik=:blog_baslik,
-            blog_sira=:blog_sira,
-            blog_aciklama=:blog_aciklama,
-            blog_resim=:blog_resim
-	        ");
-    $insert = $kaydet->execute(array(
-        'blog_baslik' => htmlspecialchars($_POST['baslik']),
-        'blog_sira' => htmlspecialchars($_POST['sira']),
-        'blog_aciklama' => $_POST['aciklama'],
-        'blog_resim' => $resimadi
-    ));
+    $baslik = $_POST['baslik'];
+    $sira = $_POST['sira'];
+    $aciklama = $_POST['aciklama'];
+    $Blog = new blog();
+    $Blog->setBlogTitle($baslik);
+    $Blog->setBlogContent($aciklama);
+    $Blog->setBlogImage($resimadi);
+    $Blog->setBlogOrder($sira);
+
+    $entityManager->persist($Blog);
+    $entityManager->flush();
+    
     $id = $baglanti->lastInsertId();
     foreach ($katid as $kategoriId) {
         $kaydet2 = $baglanti->prepare("INSERT INTO blog_to_kategori SET blog_id=:blog_id, kategori_id=:kategori_id");
@@ -149,7 +149,7 @@ if (isset($_POST['blogkaydet'])) {
         ));
     }
 
-    if ($insert) {
+    if ($Blog) {
         Header("Location:blog.php?durum=okey");
     } else {
         Header("Location:blog.php?durum=no");
@@ -265,20 +265,7 @@ if (isset($_POST['kategorikaydet'])) {
 }
 
 if (isset($_POST['kategoriduzenle'])) {
-    $duzenle = $baglanti->prepare("UPDATE  kategori SET             
 
-                kategori_baslik=:kategori_baslik,
-                kategori_sira=:kategori_sira,
-                kategori_durum=:kategori_durum,
-                kategori_resim=:kategori_resim
-                WHERE kategori_id={$_POST['id']}
-	            ");
-    $update = $duzenle->execute(array(
-        'kategori_baslik' => htmlspecialchars($_POST['baslik']),
-        'kategori_sira' => htmlspecialchars($_POST['sira']),
-        'kategori_durum' => htmlspecialchars($_POST['durum']),
-        'kategori_resim' => $resimadi
-    ));
     if ($update) {
         Header("Location:kategori.php?durum=okey");          #başarılıysa hangi sayfaya yönlendirildiği
     } else {
