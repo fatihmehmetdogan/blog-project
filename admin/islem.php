@@ -225,11 +225,12 @@ if (isset($_POST['blogsil'])) {
     $katid = $_POST['katid'];
     $eskiresim = $_POST['eskiresim'];
     unlink("resimler/blog/$eskiresim");
-    $sil = $baglanti->prepare("DELETE  FROM blog where blog_id=:blog_id");
-    $sil->execute(array(
-        'blog_id' => $_POST['id']
-    ));
-    if ($sil) {
+    $id = $_POST['id'];
+    $Blog = new blog();
+    $blog = $entityManager->find('blog', $id);
+    $entityManager->remove($blog);
+    $entityManager->flush();
+    if ($Blog) {
         Header("Location:blog.php?katid=$katid&durum=okey");
     } else {
         Header("Location:blog.php?katid=$katid&durum=no");
