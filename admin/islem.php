@@ -148,12 +148,7 @@ if (isset($_POST['blogkaydet'])) {
             'kategori_id' => $kategoriId
         ));
     }
-
-    if ($Blog) {
-        Header("Location:blog.php?durum=okey");
-    } else {
-        Header("Location:blog.php?durum=no");
-    }
+        Header("Location:blog.php");
 }
 
 if (isset($_POST['blogduzenle'])) {
@@ -226,15 +221,11 @@ if (isset($_POST['blogsil'])) {
     $eskiresim = $_POST['eskiresim'];
     unlink("resimler/blog/$eskiresim");
     $id = $_POST['id'];
-    $Blog = new blog();
     $blog = $entityManager->find('blog', $id);
     $entityManager->remove($blog);
     $entityManager->flush();
-    if ($Blog) {
-        Header("Location:blog.php?katid=$katid&durum=okey");
-    } else {
-        Header("Location:blog.php?katid=$katid&durum=no");
-    }
+    Header("Location:blog.php");
+
 }
 if (isset($_POST['kategorikaydet'])) {
     $uploads_dir = 'resimler/kategori';
@@ -258,15 +249,11 @@ if (isset($_POST['kategorikaydet'])) {
     /* @var $entityManager Doctrine\ORM\EntityManager */
     $entityManager->persist($Category);
     $entityManager->flush();
-    if ($Category) {
-        Header("Location:kategori.php?katid=$katid&durum=okey");
-    } else {
-        Header("Location:kategori.php?katid=$katid&durum=no");
-    }
+    Header("Location:kategori.php");
 }
 
 if (isset($_POST['kategoriduzenle'])) {
-
+ 
     if ($update) {
         Header("Location:kategori.php?durum=okey");          #başarılıysa hangi sayfaya yönlendirildiği
     } else {
@@ -278,15 +265,10 @@ if (isset($_POST['kategorisil'])) {
     $eskiresim = $_POST['eskiresim'];
     unlink("resimler/kategori/$eskiresim");
     $id = $_POST['id'];
-    $Category = new category();
     $category = $entityManager->find('category', $id);
     $entityManager->remove($category);
     $entityManager->flush();
-    if ($Category) {
-        Header("Location:kategori.php?katid=$katid&durum=okey");
-    } else {
-        Header("Location:kategori.php?katid=$katid&durum=no");
-    }
+    Header("Location:kategori.php");
 }
 if (isset($_POST['blogyorumkaydet'])) {
     $link = $_SERVER['HTTP_REFERER'];             # link i alıyor hangi sayfada olduğunu yorumun
