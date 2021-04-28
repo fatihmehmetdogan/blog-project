@@ -139,7 +139,7 @@ if (isset($_POST['blogkaydet'])) {
 
     $entityManager->persist($Blog);
     $entityManager->flush();
-    
+
     $id = $baglanti->lastInsertId();
     foreach ($katid as $kategoriId) {
         $kaydet2 = $baglanti->prepare("INSERT INTO blog_to_kategori SET blog_id=:blog_id, kategori_id=:kategori_id");
@@ -276,11 +276,12 @@ if (isset($_POST['kategorisil'])) {
     $katid = $_POST['katid'];
     $eskiresim = $_POST['eskiresim'];
     unlink("resimler/kategori/$eskiresim");
-    $sil = $baglanti->prepare("DELETE  FROM kategori where kategori_id=:kategori_id");
-    $sil->execute(array(
-        'kategori_id' => $_POST['id']
-    ));
-    if ($sil) {
+    $id = $_POST['id'];
+    $Category = new category();
+    $category = $entityManager->find('category', $id);
+    $entityManager->remove($category);
+    $entityManager->flush();
+    if ($Category) {
         Header("Location:kategori.php?katid=$katid&durum=okey");
     } else {
         Header("Location:kategori.php?katid=$katid&durum=no");
