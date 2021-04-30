@@ -253,12 +253,25 @@ if (isset($_POST['kategorikaydet'])) {
 }
 
 if (isset($_POST['kategoriduzenle'])) {
- 
-    if ($update) {
-        Header("Location:kategori.php?durum=okey");          #başarılıysa hangi sayfaya yönlendirildiği
-    } else {
-        Header("Location:kategori.php?durum=no");
-    }
+    $uploads_dir = 'resimler/kategori';
+    @$tmp_name = $_FILES['resim'] ["tmp_name"];
+    @$name = $_FILES['resim'] ["name"];
+    $sayi1 = rand(1, 10000000);
+    $sayi2 = rand(1, 10000000);
+    $sayi3 = rand(1, 10000000);
+    $sayilar = $sayi1 . $sayi2 . $sayi3;
+    $resimadi = $sayilar . $name;
+    @move_uploaded_file($tmp_name, "$uploads_dir/$resimadi");
+    $id = $_POST['id'];
+    $baslik = $_POST['baslik'];
+    $sira = $_POST['sira'];
+    $Category = $entityManager->find('category', $id);
+    $Category->setCategoryTitle($baslik);
+    $Category->setCategoryImage($resimadi);
+    $Category->setCategoryOrder($sira);
+    $entityManager->flush();
+    Header("Location:kategori.php");
+
 }
 if (isset($_POST['kategorisil'])) {
     $katid = $_POST['katid'];
