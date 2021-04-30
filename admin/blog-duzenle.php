@@ -1,20 +1,13 @@
 <?php
 require_once 'header.php';
 require_once 'sidebar.php';
-$blogsor = $baglanti->prepare("SELECT * FROM blog where blog_id=:blog_id");
-$blogsor->execute(array(
-    'blog_id' => $_GET['id']
-));
-$blogcek = $blogsor->fetch(PDO::FETCH_ASSOC);
+require_once '../bootstrap.php';
+/* @var $entityManager Doctrine\ORM\EntityManager */
+$id = $_GET['id'];
+$BlogRepository = $entityManager->getRepository('blog');
+$blog = $BlogRepository->find($id);
 
-$blogkategoriler = $baglanti->prepare("SELECT kategori_id FROM blog_to_kategori WHERE blog_id=:blog_id ");
-$blogkategoriler->execute(array(
-    'blog_id' => $_GET['id']
-));
-$blogkategorilerarray = $blogkategoriler->fetchAll(PDO::FETCH_COLUMN, 0);;
-$kategoriBaglanti = $baglanti->prepare("SELECT * FROM kategori");
-$kategoriBaglanti->execute(array());
-$kategoriler = $kategoriBaglanti->fetchAll();
+
 ?>
     <div class="content-wrapper">
         <section class="content">
@@ -30,7 +23,7 @@ $kategoriler = $kategoriBaglanti->fetchAll();
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">BLOG Resim</label>
                                         <img style="width:150px"
-                                             src="resimler/blog/<?php echo $blogcek['blog_resim'] ?>">
+                                             src="resimler/blog/<?php echo $blog->getBlogImage() ?>">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">BLOG Resim</label>
@@ -38,19 +31,19 @@ $kategoriler = $kategoriBaglanti->fetchAll();
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">BLOG başlık</label>
-                                        <input value="<?php echo $blogcek['blog_baslik'] ?>" name="baslik" type="text"
+                                        <input value="<?php echo $blog->getBlogTitle() ?>" name="baslik" type="text"
                                                class="form-control" placeholder="Lütfen başlık  giriniz.">
                                     </div>
 
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">BLOG sıra</label>
-                                        <input value="<?php echo $blogcek['blog_sira'] ?>" name="sira" type="text"
+                                        <input value="<?php echo $blog->getBlogOrder() ?>" name="sira" type="text"
                                                class="form-control" placeholder="Lütfen sıra  giriniz.">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">BLOG Açıklama</label>
                                         <textarea name="aciklama" id="editor1" class="ckeditor">
-                       <?php echo $blogcek['blog_aciklama'] ?> 
+                                         <?php echo $blog->getBlogContent() ?>
                     </textarea>
                                         <div class="form-group">
                                             <b>KATEGORİLER</b> <br>
@@ -65,7 +58,7 @@ $kategoriler = $kategoriBaglanti->fetchAll();
                                             ?>
                                         </div>
                                     </div>
-                                    <input type="hidden" name="id" value="<?php echo $blogcek['blog_id'] ?>">
+                                    <input type="hidden" name="id" value="<?php echo $blog->getId()  ?>">
                                 </div>
                                 <div class="card-footer">
                                     <button name="blogduzenle" style="float:right" type="submit"
