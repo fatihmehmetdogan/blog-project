@@ -152,70 +152,27 @@ if (isset($_POST['blogkaydet'])) {
 }
 
 if (isset($_POST['blogduzenle'])) {
-    $katid = $_POST['katid'];
-    $resimadi = null;
-    if ($_FILES['resim'] ["size"] > 0) {
-        $uploads_dir = 'resimler/blog';
-        @$tmp_name = $_FILES['resim'] ["tmp_name"];
-        @$name = $_FILES['resim'] ["name"];
-        $sayi1 = rand(1, 10000000);
-        $sayi2 = rand(1, 10000000);
-        $sayi3 = rand(1, 10000000);
-        $sayilar = $sayi1 . $sayi2 . $sayi3;
-        $resimadi = $sayilar . $name;
-        @move_uploaded_file($tmp_name, "$uploads_dir/$resimadi");
-        $kaydet = $baglanti->prepare("UPDATE blog SET
-blog_baslik=:blog_baslik,
-blog_sira=:blog_sira,
-blog_aciklama=:blog_aciklama,
-blog_resim=:blog_resim
-WHERE blog_id={$_POST['id']}
-	");
-        $update = $kaydet->execute(array(
-            'blog_baslik' => htmlspecialchars($_POST['baslik']),
-            'blog_sira' => htmlspecialchars($_POST['sira']),
-            'blog_aciklama' => $_POST['aciklama'],
-            'blog_resim' => $resimadi
-        ));
-    } else {
-        $kaydet = $baglanti->prepare("UPDATE blog SET
-blog_baslik=:blog_baslik,
-blog_sira=:blog_sira,
-blog_aciklama=:blog_aciklama
-WHERE blog_id={$_POST['id']}
-	");
-        $update = $kaydet->execute(array(
-            'blog_baslik' => htmlspecialchars($_POST['baslik']),
-            'blog_sira' => htmlspecialchars($_POST['sira']),
-            'blog_aciklama' => $_POST['aciklama']
-        ));
+    $uploads_dir = 'resimler/blog';
+    @$tmp_name = $_FILES['resim'] ["tmp_name"];
+    @$name = $_FILES['resim'] ["name"];
+    $sayi1 = rand(1, 10000000);
+    $sayi2 = rand(1, 10000000);
+    $sayi3 = rand(1, 10000000);
+    $sayilar = $sayi1 . $sayi2 . $sayi3;
+    $resimadi = $sayilar . $name;
+    @move_uploaded_file($tmp_name, "$uploads_dir/$resimadi");
+    $id = $_POST['id'];
+    $baslik = $_POST['baslik'];
+    $sira = $_POST['sira'];
+    $aciklama = $_POST['aciklama'];
+    $Blog = $entityManager->find('blog', $id);
+    $Blog->setBlogTitle($baslik);
+    $Blog->setBlogImage($resimadi);
+    $Blog->setBlogOrder($sira);
+    $Blog->setBlogContent($aciklama);
+    $entityManager->flush();
+    Header("Location:blog.php");
     }
-    foreach ($katid as $kategoriId) {
-        $kontrol = $baglanti->prepare("SELECT id FROM blog_to_kategori WHERE blog_id=:blog_id AND kategori_id=:kategori_id");
-        $kontrol->execute(array(
-            'blog_id' => $_POST['id'],
-            'kategori_id' => $kategoriId
-        ));
-        $varolan = $kontrol->fetchAll(PDO::FETCH_COLUMN, 0);
-        if (count($varolan) > 0) {
-            continue;
-        }
-        $kaydet2 = $baglanti->prepare("INSERT INTO blog_to_kategori SET blog_id=:blog_id, kategori_id=:kategori_id");
-        $insert2 = $kaydet2->execute(array(
-            'blog_id' => $_POST['id'],
-            'kategori_id' => $kategoriId
-        ));
-    }
-    if ($update) {
-        $eskiresim = $_POST['eskiresim'];
-        if ($eskiresim && $resimadi) {
-            unlink("resimler/blog/$eskiresim");
-        }
-        Header("Location:blog.php?durum=okey");
-    } else {
-        Header("Location:blog.php?durum=no");
-    }
-}
 if (isset($_POST['blogsil'])) {
     $katid = $_POST['katid'];
     $eskiresim = $_POST['eskiresim'];
